@@ -1,0 +1,77 @@
+body {   
+    background: url('/img/background.jpg') no-repeat;
+    background-color: #ccc;
+    background-size: cover;
+    font-family: "Helvetica Neue";
+ }
+
+ body img {
+    max-width: 100%;
+ }
+
+ h1 {
+    color: #333;
+    text-align: center;
+ }
+
+ p {
+    color: #ccc;
+    text-align: center;
+ }
+
+ a {
+    color: #333;
+    text-decoration: none;
+ }
+
+ .title {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    background-color: white;
+    width: 100%;
+ }
+
+
+ .button { 
+    background-color: white;
+    text-align: center;
+    width: 20%;
+    padding: 15px;
+    color: #333;
+    font-size: 24px;
+    font-weight: 320;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 10px;
+ }
+
+ #roommate {
+    position: fixed;
+    top: 41%;
+    left: 25%;
+    float: left;
+ }
+
+ #room {
+    position: relative;
+    top: 40%;
+    right: 25%;
+    float: right;
+ }
+
+ #filter {
+    position: absolute;
+    top: 20px;
+    float: right;
+    left: 5%;
+    background: #eee;
+ }
+
+ #search {
+    position: relative;
+    top: 15px;
+    right: 5%;
+    float: right;
+    background: #eee;
+}
