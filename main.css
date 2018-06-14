@@ -70,16 +70,16 @@ body {
 
  #roommate {
     position: fixed;
-    top: 41%;
+    float: left;    
+    top: 40%;
     left: 25%;
-    float: left;
  }
 
  #room {
-    position: relative;
+    position: fixed;
+    float: right;
     top: 40%;
     right: 25%;
-    float: right;
  }
 
  #filter {
