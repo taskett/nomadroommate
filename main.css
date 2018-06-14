@@ -105,3 +105,13 @@ body {
     background: transparent;
     border: 1px solid #ccc;
 }
+
+@media screen and (max-width: 800px) {
+    .airtable-embed {
+        width: 90%;
+        height: 80% ;
+        margin-top: 150px;
+        background: transparent;
+        border: 1px solid #ccc;
+    }
+ }
