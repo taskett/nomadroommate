@@ -75,3 +75,11 @@ body {
     float: right;
     background: #eee;
 }
+
+.airtable-embed {
+    width: 60%;
+    height: 80% ;
+    margin-top: 150px;
+    background: transparent;
+    border: 1px solid #ccc;
+}
