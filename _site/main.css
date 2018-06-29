@@ -72,14 +72,14 @@ body {
  #roommate {
     position: fixed;
     float: left;    
-    top: 40%;
+    top: 50%;
     left: 25%;
  }
 
  #room {
     position: fixed;
     float: right;
-    top: 40%;
+    top: 50%;
     right: 25%;
  }
 
