@@ -15,12 +15,26 @@
   
     gtag('config', 'UA-120783224-1');
   </script>  
+
+<script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+
+<script type="text/javascript" src="/app.js"></script>
 </head>
-<body>
+
+<header>
     <div class="title">
         <h1><a href="/index.html">🏡 Nomad Roommate 🌴</a></h1>
         <p>split super swanky homes around the world</p>
     </div>
+    <div id="btn-login" class="header-button">
+        Sign up
+    </div>
+    <div id="btn-login2" class="header-button">
+        Log in
+    </div>
+</header>
+
+<body>
     <div onclick="window.location.href='/list_place.html'" id="roommate" class="button">
         List a Place
     </div>
