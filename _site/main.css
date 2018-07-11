@@ -39,7 +39,7 @@ body {
  }
 
 
- .button { 
+  .button { 
     background-color: white;
     text-align: center;
     width: 20%;
@@ -51,7 +51,7 @@ body {
     border: none;
     border-radius: 6px;
     cursor: pointer;
- }
+ } 
  @media screen and (max-width: 800px) {
     .button { 
         background-color: white;
@@ -70,7 +70,7 @@ body {
      }
 } 
 
-.header-button { 
+.btn btn-primary btn-margin { 
     text-align: center;
     width: 55px;
     height: 15px;
@@ -83,7 +83,7 @@ body {
     cursor: pointer;
  }
 
-#btn-login2 {
+#btn-home-view {
     position: relative;
     float: right;
     background-color: white;
@@ -91,6 +91,13 @@ body {
 }
 
 #btn-login {
+    position: relative;
+    float: right;
+    color: white;
+    background-color: #555;
+} 
+
+#btn-logout {
     position: relative;
     float: right;
     color: white;
@@ -125,7 +132,7 @@ body {
     right: 5%;
     float: right;
     background: #eee;
-}
+} 
 
 .airtable-embed {
     width: 60%;
