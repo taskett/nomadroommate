@@ -71,6 +71,19 @@ body {
 } 
 
 /* AUTH0 CSS for TESTING */
+.header_button{
+    text-align: center;
+    width: 60px;
+    height: 15px;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer; 
+}
+
 
 .btn btn-primary btn-margin{
     text-align: center;
@@ -106,7 +119,7 @@ body {
     color: #555;
 }
 
-/*
+
 .header-button { 
     text-align: center;
     width: 55px;
@@ -141,7 +154,7 @@ body {
     background-color: #555;
 }
 
-*/
+
 
  #roommate {
     position: fixed;
