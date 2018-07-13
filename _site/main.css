@@ -9,6 +9,12 @@ body {
     max-width: 100%;
  }
 
+ @media screen and (max-width: 800px) {
+    body {
+        background: url("/img/background-mobile.jpg")
+    }
+ }
+
  h1 {
     color: #555;
     text-align: center;
