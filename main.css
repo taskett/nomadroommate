@@ -189,7 +189,7 @@ body {
 .airtable-embed {
     width: 60%;
     height: 80% ;
-    margin-top: 150px;
+    margin-top: 115px;
     background: transparent;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -197,9 +197,10 @@ body {
 
 @media screen and (max-width: 800px) {
     .airtable-embed {
-        width: 90%;
+        width: 95%;
         height: 80% ;
-        margin-top: 150px;
+        margin-top: 100px;
+        margin-bottom: 20px;
         background: transparent;
         border: 1px solid #ccc;
         border-radius: 6px;
@@ -207,5 +208,8 @@ body {
  }
 
  #listings {
-     width: 95%;
+    -webkit-box-flex: 0;
+    width: 95%;
+    height: 100%;
+    border: 1px solid #ccc;"
  }
