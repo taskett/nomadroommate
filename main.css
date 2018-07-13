@@ -70,7 +70,44 @@ body {
      }
 } 
 
-.btn btn-primary btn-margin { 
+/* AUTH0 CSS for TESTING */
+
+.btn btn-primary btn-margin{
+    text-align: center;
+    width: 55px;
+    height: 15px;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer; 
+}
+
+#btn-home-view {
+    position: relative;
+    float: right;
+    background-color: white;
+    color: #555;
+}
+
+#btn-login {
+    position: relative;
+    float: right;
+    background-color: white;
+    color: #555;
+}
+
+#btn-logout {
+    position: relative;
+    float: right;
+    background-color: white;
+    color: #555;
+}
+
+/*
+.header-button { 
     text-align: center;
     width: 55px;
     height: 15px;
@@ -103,6 +140,8 @@ body {
     color: white;
     background-color: #555;
 }
+
+*/
 
  #roommate {
     position: fixed;

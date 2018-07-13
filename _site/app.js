@@ -1,29 +1,14 @@
-// app.js
-
 window.addEventListener('load', function() {
 
-    var webAuth = new auth0.WebAuth({
-      domain: 'nomadroommate.auth0.com',
-      clientID: 'xz8vlaLPpNVnFZDhtXLe2ouuBGGqEu2J',
-      responseType: 'token id_token',
-      audience: 'https://nomadroommate.auth0.com/userinfo',
-      scope: 'openid',
-      redirectUri: window.location.href
-    });
-  
-    var loginBtn = document.getElementById('btn-login');
-  
-    loginBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      webAuth.authorize();
-    });
-  
+  var webAuth = new auth0.WebAuth({
+    domain: 'nomadroommate.auth0.com',
+    clientID: 'xz8vlaLPpNVnFZDhtXLe2ouuBGGqEu2J',
+    responseType: 'token id_token',
+    audience: 'https://nomadroommate.auth0.com/userinfo',
+    scope: 'openid',
+    redirectUri: window.location.href
   });
-
-  // app.js
-
-window.addEventListener('load', function() {
-
+  
   // ...
   var loginStatus = document.querySelector('.container h4');
   var loginView = document.getElementById('login-view');
@@ -41,7 +26,7 @@ window.addEventListener('load', function() {
 
   logoutBtn.addEventListener('click', logout);
 
-  function handleAuthentication() {
+   function handleAuthentication() {
     webAuth.parseHash(function(err, authResult) {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
@@ -57,7 +42,7 @@ window.addEventListener('load', function() {
       }
       displayButtons();
     });
-  }
+  } 
 
   function setSession(authResult) {
     // Set the time that the Access Token will expire at
@@ -96,11 +81,15 @@ window.addEventListener('load', function() {
         'You are not logged in! Please log in to continue.';
     }
   }
-});
 
+  var loginBtn = document.getElementById('btn-login');
 
-window.addEventListener('load', function() {
+  loginBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    webAuth.authorize();
+  });
 
   // ...
   handleAuthentication();
+
 });
