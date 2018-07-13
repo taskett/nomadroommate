@@ -1,34 +1,63 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nomad Roommate Finder</title>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+    <script type="text/javascript" src="/app.js"></script> 
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120783224-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
       
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120783224-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'UA-120783224-1');
-  </script>
-  
+        gtag('config', 'UA-120783224-1');
+    </script>  
+    <link rel="icon" href="/img/houseicon.png">
+    <title>Nomad Roommate Finder</title>
 </head>
+
 <body>
    <div class="title">
         <h1><a href="/index.html">🏡 Nomad Roommate 🌴</a></h1>
         <p>split super swanky homes around the world</p>
     </div>
 
- <!--    <div id="filter" class="button">
-        Filter by...
-    </div>
-    <div id="search" class="button">
-        🔍 Search by Location
-    </div> -->
+    <div class="content">
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="#">Auth0 - JavaScript</a>
+          
+                  <div onclick="window.location.href='/listings.html'" id="btn-home-view" class="header_button">
+                      Home
+                  </div>
+          
+                  <div id="btn-login" class="header_button">
+                      Log In
+                  </div>
+          
+                  <div id="btn-logout" class="header_button">
+                      Log Out
+                  </div>
+          
+                </div>
+              </div>
+            </nav>
+          
+            <main class="container">
+              <!-- home view -->
+              <div id="home-view">
+                <h4></h4>
+              </div>
+              
+            </main>
+          
+          </div>
+
     <center>
         <iframe class="airtable-embed" id="listings" src="https://airtable.com/embed/shrjmGkgFfRUPw3aV?backgroundColor=pink&viewControls=on"></iframe>
     </center>
