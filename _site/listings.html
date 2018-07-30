@@ -58,8 +58,58 @@
           
           </div>
 
-    <center>
-        <iframe class="airtable-embed" id="listings" src="https://airtable.com/embed/shrjmGkgFfRUPw3aV?backgroundColor=pink&viewControls=on"></iframe>
-    </center>
+          <div id="app">
+            <ul>
+                <li v-for="item in items">
+                    <h3>{{ item['fields']['Location'] }}</h3>
+                    <img :src="item['fields']['Photo of Airbnb'][0]['thumbnails']['large']['url']" alt="" v-if="item['fields']['Photo of Airbnb']" width="150">
+                    <p>{{ item['fields']['Description'] }}</p>
+                    <p><strong>Price Per Roommate: </strong>${{ item['fields']['Price Per Room'] }}</p>
+                    <p><strong>Rooms Available: </strong>{{ item['fields']['Rooms Available'] }}</p>
+                    <p><strong>Travel Dates: </strong>{{ item['fields']['Arrive On'] }} through {{ item['fields']['Leave On'] }}</p>
+                    <p><strong>Gender(s): </strong>{{ item['fields']['Genders'] }}</p>
+                </li>
+            </ul>            
+          </div>
+
+
+          
+        
+          <script type="text/javascript" src="https://unpkg.com/vue"></script>
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+        
+            <script type="text/javascript">
+              var app = new Vue({
+                  el: '#app',
+                  data: {
+                      items: []
+                  },
+                  mounted: function(){
+                    this.loadItems(); 
+                  },
+                  methods: {
+                      loadItems: function(){
+                          
+                          // Init variables
+                          var self = this
+                          var app_id = "appo2qL96FI9YS6Tj";
+                          var app_key = "key07Up8Mf6tdrd2n";
+                          this.items = []
+          axios.get(
+                              "https://api.airtable.com/v0/"+app_id+"/Menu?view=Grid%20view",
+                              { 
+                                  headers: { Authorization: "Bearer "+app_key } 
+                              }
+                          ).then(function(response){
+                              self.items = response.data.records
+                          }).catch(function(error){
+                              console.log(error)
+                          })
+                      }
+                  }
+              })
+          </script>
+
+
 </body>
 </html>

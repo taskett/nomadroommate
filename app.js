@@ -1,4 +1,5 @@
-window.addEventListener('load', function() {
+
+window.addEventListener('DOMContentLoaded', function() {
 
   var webAuth = new auth0.WebAuth({
     domain: 'nomadroommate.auth0.com',
@@ -26,6 +27,7 @@ window.addEventListener('load', function() {
 
   logoutBtn.addEventListener('click', logout);
 
+  
    function handleAuthentication() {
     webAuth.parseHash(function(err, authResult) {
       if (authResult && authResult.accessToken && authResult.idToken) {
@@ -92,4 +94,27 @@ window.addEventListener('load', function() {
   // ...
   handleAuthentication();
 
-});
+  
+    document.getElementById("airtableAuth").addEventListener("click", popUp);
+  
+    function popUp() {
+          alert("You must be logged in to submit a listing!");
+    } 
+
+
+    function popUp() {
+      if (isAuthenticated()) {
+        loginBtn.style.display = 'none';
+        logoutBtn.style.display = 'inline-block';
+        loginStatus.innerHTML = 'You are logged in!';
+      } else {
+        alert("You must be logged in to submit a listing!");
+      }
+    }
+}); 
+
+
+const base = require('airtable').base('appFZ6B9PT3aHUndx');
+
+
+                
