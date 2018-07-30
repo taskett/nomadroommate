@@ -30,8 +30,7 @@ body {
  }
 
  p {
-    color: #ccc;
-    text-align: center;
+    text-align: left;
  }
 
  @media screen and (max-width: 800px) {
@@ -50,6 +49,7 @@ body {
 
  ul {
      list-style-type: none;
+     color: #333;
      margin: 0;
      padding: 0;
      display: flex;
@@ -72,6 +72,11 @@ body {
     left: 0;
     background-color: white;
     width: 100%;
+ }
+
+ .title p{
+    color: #ccc;
+    text-align: center;
  }
 
   .button { 
