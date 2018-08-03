@@ -62,12 +62,11 @@
             <ul>
                 <li v-for="item in items">
                     <h3>{{ item['fields']['Location'] }}</h3>
-                    <img :src="item['fields']['Photo of Airbnb'][0]['thumbnails']['large']['url']" alt="" v-if="item['fields']['Photo of Airbnb']" width="150">
-                    <p>{{ item['fields']['Description'] }}</p>
-                    <p><strong>Price Per Room: </strong>${{ item['fields']['Price Per Room'] }}</p>
-                    <p><strong>Rooms Available: </strong>{{ item['fields']['Rooms Available'] }}</p>
-                    <p><strong>Travel Dates: </strong>{{ item['fields']['Arrive On'] }} through {{ item['fields']['Leave On'] }}</p>
-                    <p><strong>Gender(s): </strong>{{ item['fields']['Genders'] }}</p>
+                    <img :src="item['fields']['Photo'][0]['thumbnails']['large']['url']" alt="" v-if="item['fields']['Photo']" width="150">
+                    <p><strong>Price Per Room: </strong>${{ item['fields']['Price'] }}</p>
+                    <p><strong>Rooms Available: </strong>{{ item['fields']['Rooms'] }}</p>
+                    <p><strong>Travel Dates: </strong>{{ item['fields']['Start'] }} through {{ item['fields']['End'] }}</p>
+                    <p><strong>Gender(s): </strong>{{ item['fields']['Genders'] }}</p> 
                 </li>
             </ul>            
           </div>
@@ -96,7 +95,7 @@
                           var app_key = "key07Up8Mf6tdrd2n";
                           this.items = []
           axios.get(
-                              "https://api.airtable.com/v0/"+app_id+"/Menu?view=Grid%20view",
+                              "https://api.airtable.com/v0/"+app_id+"/Table?view=Grid%20view",
                               { 
                                   headers: { Authorization: "Bearer "+app_key } 
                               }
