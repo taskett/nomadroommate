@@ -95,26 +95,61 @@ window.addEventListener('DOMContentLoaded', function() {
   handleAuthentication();
 
   
-    document.getElementById("airtableAuth").addEventListener("click", popUp);
-  
-    function popUp() {
-          alert("You must be logged in to submit a listing!");
-    } 
 
 
-    function popUp() {
-      if (isAuthenticated()) {
-        loginBtn.style.display = 'none';
-        logoutBtn.style.display = 'inline-block';
-        loginStatus.innerHTML = 'You are logged in!';
-      } else {
-        alert("You must be logged in to submit a listing!");
-      }
-    }
+    console.clear();
+        
+            var airtable_write_endpoint = "https://api.airtable.com/v0/appo2qL96FI9YS6Tj/Table?api_key=key07Up8Mf6tdrd2n";
+        
+            // Write API
+            var form = document.querySelector("#voting-form");
+            var select_gender = document.querySelector("#gender");
+            var input_location = document.querySelector("#location");
+            var select_price = document.querySelector("#price");
+            var select_rooms = document.querySelector("#rooms");
+            var input_start = document.querySelector("#start");
+            var input_end = document.querySelector("#end");
+        
+            form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+           
+            document.getElementById("buttonz").addEventListener("click", popUp);
+
+            function popUp() {
+              if (isAuthenticated()) {
+                loginStatus.innerHTML = 'You are logged in!';
+        
+              axios.post(airtable_write_endpoint, {
+                  "fields": {
+                  "Genders": select_gender.options[select_gender.selectedIndex].value,
+                  "Location": input_location.value,
+                  "Price": select_price.options[select_price.selectedIndex].value,
+                  "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
+                  "Start": input_start.value,
+                  "End": input_end.value
+                  }
+              }) .then(function (response) {
+              console.log(response);
+              alert("Success!");
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert("Error");
+            })       } else {
+              alert("You must be logged in to submit a listing!");
+            }
+          };
+            
+          });
+
+    
 }); 
 
 
-const base = require('airtable').base('appFZ6B9PT3aHUndx');
+
+
+
 
 
                 

@@ -48,10 +48,6 @@
               </div>
             </nav>
 
-           <!-- <div id="buttonz" class="buttonTest">
-                PRESS ME
-                <p id="demo"></p>
-            </div> -->
   
             <main class="container">
               <!-- home view -->
@@ -64,117 +60,114 @@
           </div>
         
           <form action="#0" id="voting-form" class="voting-form">
-              <h1>Submit a Listing</h1>
-              <div> 
-                <p>Location</p>
-                  <input name="location" type="text" id="location">  <br>
-                <p>Travel Dates</p>
-                  <label for="start">Start</label>
-                      <input type="date" id="start" name="start"
-                      value="2018-07-22"
-                      min="2018-01-01" max="2018-12-31" />    <br>
-                  <label for="end">End</label>
-                      <input type="date" id="end" name="end"
-                      value="2018-07-29"
-                      min="2018-01-01" max="2018-12-31"/ >          
-                <p>Price per Room</p>
-                  <select name="price" id="price">
-                    <option value="Under $20/night">Under $20/night</option>
-                    <option value="$20-$40/night">$20-$40/night</option>
-                    <option value="$40-$60/night">$40-$60/night</option>
-                    <option value="$40-$60/night">$60-$80/night</option>
-                    <option value="$40-$60/night">Over $80/night</option>
+                <h1>Submit a Listing</h1>
+                <div> 
+                  <p>Location</p>
+                    <input name="location" type="text" id="location">  <br>
+                  <p>Travel Dates</p>
+                    <label for="start">Start</label>
+                        <input type="date" id="start" name="start"
+                        value="2018-07-22"
+                        min="2018-01-01" max="2018-12-31" />    <br>
+                    <label for="end">End</label>
+                        <input type="date" id="end" name="end"
+                        value="2018-07-29"
+                        min="2018-01-01" max="2018-12-31"/ >         
+                  <p>Price per Room</p>
+                    <select name="price" id="price">
+                      <option value="Under $20/night">Under $20/night</option>
+                      <option value="$20-$40/night">$20-$40/night</option>
+                      <option value="$40-$60/night">$40-$60/night</option>
+                      <option value="$40-$60/night">$60-$80/night</option>
+                      <option value="$40-$60/night">Over $80/night</option>
+                    </select>
+                  <p># of Rooms Available</p>
+                     <select name="rooms" id="rooms">
+                       <option value="1">1</option>
+                       <option value="2">2</option>
+                       <option value="3">3</option>
+                       <option value="4">4</option>
+                       <option value="5">5</option>
+                       <option value="6">6</option>
+                       <option value="7">7</option>
+                       <option value="8">8</option>
+                    </select>                  
+                  <p>Gender(s)</p>    
+                  <select name="gender" id="gender">
+                    <option value="Female Only">Female Only</option>
+                    <option value="Male Only">Male Only</option>
+                    <option value="Coed">Coed</option>
                   </select>
-                <p># of Rooms Available</p>
-                   <select name="rooms" id="rooms">
-                     <option value="1">1</option>
-                     <option value="2">2</option>
-                     <option value="3">3</option>
-                     <option value="4">4</option>
-                     <option value="5">5</option>
-                     <option value="6">6</option>
-                     <option value="7">7</option>
-                     <option value="8">8</option>
-                  </select>                  
-                <p>Gender(s)</p>    
-                <select name="gender" id="gender">
-                  <option value="Female Only">Female Only</option>
-                  <option value="Male Only">Male Only</option>
-                  <option value="Coed">Coed</option>
                 </select>
-              </select>
-              </div>
-              <div>
-                <input type="submit" value="Vote">
-              </div>
-            </form>
-                  
-                    
-         
-          <style>
-                  body {
-              font-family: Sans-Serif;
-              margin: 0;
-              }
-              h1, h2 {
-              font-size: 20px;
-              }
-      
-              .voting-form {
-              background: #eee;
-              padding: 20px;
-              margin: 0 0 20px 0;
-              }
-              select {
-              width: 200px;
-              text-align: center;
-              }
-          </style>
+                </div>
+                <div>
+                  <input type="submit" value="Submit" id="buttonz">
+                </div>
+              </form>
+
+            <style>
+                body {
+                font-family: Sans-Serif;
+                margin: 0;
+                }
+                h1, h2 {
+                font-size: 20px;
+                }
         
-      
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
-              
-          <script>
-      
-          console.clear();
-      
-          var airtable_write_endpoint = "https://api.airtable.com/v0/appo2qL96FI9YS6Tj/Table?api_key=key07Up8Mf6tdrd2n";
-      
-          // Write API
-          var form = document.querySelector("#voting-form");
-          var select_gender = document.querySelector("#gender");
-          var input_location = document.querySelector("#location");
-          var select_price = document.querySelector("#price");
-          var select_rooms = document.querySelector("#rooms");
-          var input_start = document.querySelector("#start");
-          var input_end = document.querySelector("#end");
-      
-          form.addEventListener("submit", function (event) {
-          event.preventDefault();
-      
-          axios.post(airtable_write_endpoint, {
-              "fields": {
-              "Genders": select_gender.options[select_gender.selectedIndex].value,
-              "Location": input_location.value,
-              "Price": select_price.options[select_price.selectedIndex].value,
-              "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
-              "Start": input_start.value,
-              "End": input_end.value,
-              }
-          }) .then(function (response) {
-          console.log(response);
-          alert("You have successfully submitted");
-        })
-        .catch(function (error) {
-          console.log(error);
-          alert("Error");
-        });
+                .voting-form {
+                background: #eee;
+                padding: 20px;
+                margin: 0 0 20px 0;
+                }
+                select {
+                width: 200px;
+                text-align: center;
+                }
+            </style>
           
+        
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+                
+     <!--       <script>
+        
+            console.clear();
+        
+            var airtable_write_endpoint = "https://api.airtable.com/v0/appo2qL96FI9YS6Tj/Table?api_key=key07Up8Mf6tdrd2n";
+        
+            // Write API
+            var form = document.querySelector("#voting-form");
+            var select_gender = document.querySelector("#gender");
+            var input_location = document.querySelector("#location");
+            var select_price = document.querySelector("#price");
+            var select_rooms = document.querySelector("#rooms");
+            var input_start = document.querySelector("#start");
+            var input_end = document.querySelector("#end");
+        
+            form.addEventListener("submit", function (event) {
+            event.preventDefault();
+        
+            axios.post(airtable_write_endpoint, {
+                "fields": {
+                "Genders": select_gender.options[select_gender.selectedIndex].value,
+                "Location": input_location.value,
+                "Price": select_price.options[select_price.selectedIndex].value,
+                "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
+                "Start": input_start.value,
+                "End": input_end.value
+                }
+            }) .then(function (response) {
+            console.log(response);
+            alert("Success!");
+          })
+          .catch(function (error) {
+            console.log(error);
+            alert("Error");
           });
-      
-      </script>
+            
+          });
 
+          
 
-
+            </script> -->
      </body>     
 </html>

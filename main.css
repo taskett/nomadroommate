@@ -111,28 +111,6 @@ body {
 } 
 
 
-.buttonTest { 
-    background-color: white;
-    text-align: center;
-    width: 20%;
-    padding: 15px;
-    color: #333;
-    font-size: 24px;
-    font-weight: 320;
-    letter-spacing: 0.5px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
- }
-
-#buttonz { 
-    position: fixed;
-    float: left;    
-    top: 50%;
-    left: 25%;
-    color: red;
- } 
-
 .header_button{
     text-align: center;
     width: 60px;
