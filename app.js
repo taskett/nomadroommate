@@ -94,8 +94,10 @@ window.addEventListener('DOMContentLoaded', function() {
   // ...
   handleAuthentication();
 
-  
 
+
+  //Like on submit, check if user is logged in, if yes continue submit, else show pop up
+  // step 1- event listener on submit to see if auth
 
     console.clear();
         
@@ -114,9 +116,7 @@ window.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
 
            
-            document.getElementById("buttonz").addEventListener("click", popUp);
-
-            function popUp() {
+            {
               if (isAuthenticated()) {
                 loginStatus.innerHTML = 'You are logged in!';
         
@@ -139,9 +139,9 @@ window.addEventListener('DOMContentLoaded', function() {
             })       } else {
               alert("You must be logged in to submit a listing!");
             }
-          };
+          }; 
             
-          });
+      });
 
     
 }); 

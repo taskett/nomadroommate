@@ -94,16 +94,9 @@ window.addEventListener('DOMContentLoaded', function() {
   // ...
   handleAuthentication();
 
-  
-    document.getElementById("buttonz").addEventListener("click", popUp);
 
-    function popUp() {
-      if (isAuthenticated()) {
-        loginStatus.innerHTML = 'You are logged in!';
-      } else {
-        alert("You must be logged in to submit a listing!");
-      }
-    } 
+
+  //Like on submit, check if user is logged in, if yes continue submit, else show pop up
 
     console.clear();
         
@@ -120,27 +113,38 @@ window.addEventListener('DOMContentLoaded', function() {
         
             form.addEventListener("submit", function (event) {
             event.preventDefault();
-        
-            axios.post(airtable_write_endpoint, {
-                "fields": {
-                "Genders": select_gender.options[select_gender.selectedIndex].value,
-                "Location": input_location.value,
-                "Price": select_price.options[select_price.selectedIndex].value,
-                "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
-                "Start": input_start.value,
-                "End": input_end.value
-                }
-            }) .then(function (response) {
-            console.log(response);
-            alert("Success!");
-          })
-          .catch(function (error) {
-            console.log(error);
-            alert("Error");
-          });
-            
-          });
 
+           
+           document.getElementById("buttonz").addEventListener("click", popUp);
+
+            function popUp() {
+              if (isAuthenticated()) {
+                loginStatus.innerHTML = 'You are logged in!';
+        
+              axios.post(airtable_write_endpoint, {
+                  "fields": {
+                  "Genders": select_gender.options[select_gender.selectedIndex].value,
+                  "Location": input_location.value,
+                  "Price": select_price.options[select_price.selectedIndex].value,
+                  "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
+                  "Start": input_start.value,
+                  "End": input_end.value
+                  }
+              }) .then(function (response) {
+              console.log(response);
+              alert("Success!");
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert("Error");
+            })       } else {
+              alert("You must be logged in to submit a listing!");
+            }
+          }; 
+            
+      });
+
+    
 }); 
 
 
