@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     console.clear();
         
-            var airtable_write_endpoint = "https://api.airtable.com/v0/appo2qL96FI9YS6Tj/Table?api_key=key07Up8Mf6tdrd2n";
+            var airtable_write_endpoint = "https://api.airtable.com/v0/appo2qL96FI9YS6Tj/Table?api_key=key5a0jKwTyFl7Khg";
         
             // Write API
             var form = document.querySelector("#voting-form");
