@@ -31,12 +31,47 @@ window.addEventListener('DOMContentLoaded', function() {
   };
   firebase.initializeApp(config);
 
+  function isAuthenticated() {
+    // Check whether the current time is past the
+    // Access Token's expiry time
+    var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return new Date().getTime() < expiresAt;
+  }
+
+  function setSession(authResult) {
+    console.log("authResult: ", authResult);
+
+    // Set the time that the Access Token will expire at
+    var expiresAt = JSON.stringify(
+      authResult.expiresIn * 1000 + new Date().getTime()
+    );
+    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('expires_at', expiresAt);
+  }
+
+  function displayButtons() {
+    if (isAuthenticated()) {
+      loginBtn.style.display = 'none';
+      logoutBtn.style.display = 'inline-block';
+      loginStatus.innerHTML = 'You are logged in!';
+    } else {
+      loginBtn.style.display = 'inline-block';
+      logoutBtn.style.display = 'none';
+      loginStatus.innerHTML =
+        'You are not logged in! Please log in to continue.';
+    }
+  }
+
   // Functions to be used
   function handleAuthentication() {
-    console.log("user logging in...");
-
+    if (isAuthenticated()) {
+      return;
+    }
     webAuth.parseHash(function(err, authResult) {
       if (authResult && authResult.accessToken && authResult.idToken) {
+        console.log("user logging in...");
+        
         window.location.hash = '';
         setSession(authResult);
         console.log("user logged in");
@@ -54,37 +89,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   } 
 
-  function setSession(authResult) {
-    console.log("authResult: ", authResult);
-    
-    // Set the time that the Access Token will expire at
-    var expiresAt = JSON.stringify(
-      authResult.expiresIn * 1000 + new Date().getTime()
-    );
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
-  }
-
-  function isAuthenticated() {
-    // Check whether the current time is past the
-    // Access Token's expiry time
-    var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
-  }
-
-  function displayButtons() {
-    if (isAuthenticated()) {
-      loginBtn.style.display = 'none';
-      logoutBtn.style.display = 'inline-block';
-      loginStatus.innerHTML = 'You are logged in!';
-    } else {
-      loginBtn.style.display = 'inline-block';
-      logoutBtn.style.display = 'none';
-      loginStatus.innerHTML =
-        'You are not logged in! Please log in to continue.';
-    }
-  }
+  
 
   // init event listeners
   homeViewBtn.addEventListener('click', function() {
