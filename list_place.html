@@ -70,18 +70,18 @@
       <h1>Submit a Listing</h1>
       <div>
         <p>Location</p>
-        <input name="location" value="test" required type="text" id="location"> <br>
+        <input name="location" placeholder="Bali" required type="text" id="location"> <br>
 
         <p>Travel Dates</p>
         <label for="start">Start</label>
-        <input required type="date" id="start" value="2018-01-01" name="start" min="2018-01-01" /> <br>
+        <input required type="date" id="start" name="start" min="2018-01-01" /> <br>
 
         <label for="end">End</label>
-        <input required type="date" id="end" value="2018-01-01" name="end" min="2018-01-01" />
+        <input required type="date" id="end" name="end" min="2018-01-01" />
 
         <p>Price per Room</p>
         <select required name="price" id="price">
-          <!-- <option value="" selected disabled style='display:none;'> Select a price </option> -->
+          <option value="" selected disabled style='display:none;'> Select a price </option>
           <option value="Under $20/night">Under $20/night</option>
           <option value="$20-$40/night">$20-$40/night</option>
           <option value="$40-$60/night">$40-$60/night</option>
@@ -91,7 +91,7 @@
 
         <p># of Rooms Available</p>
         <select name="rooms" id="rooms">
-          <!-- <option value="" selected disabled style='display:none;'> Select # of rooms </option> -->
+          <option value="" selected disabled style='display:none;'> Select # of rooms </option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -104,7 +104,7 @@
 
         <p>Gender(s)</p>
         <select name="gender" id="gender">
-          <!-- <option value="" selected disabled style='display:none;'> Select gender(s) </option> -->
+          <option value="" selected disabled style='display:none;'> Select gender(s) </option>
           <option value="Female Only">Female Only</option>
           <option value="Male Only">Male Only</option>
           <option value="Coed">Coed</option>
@@ -113,9 +113,6 @@
       </div>
       <div>
         <input type="submit" value="Submit" id="buttonz">
-      </div>
-      <div id="app">
-        <p><strong>test: </strong>{{ items }}</p>
       </div>
     </form>
   </body>

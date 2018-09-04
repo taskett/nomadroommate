@@ -102,7 +102,7 @@
                         }
                     })
                     .then(function (response) {
-                        self.items = response.data.records
+                        self.items = response.data.records.reverse()
                     })
                     .catch(function (error) {
                         console.log(error)
