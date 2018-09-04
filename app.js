@@ -1,7 +1,7 @@
 
 window.addEventListener('DOMContentLoaded', function() {
 
-  console.log("app loaded 3");
+  console.log("app loaded 4");
   
   // Init variables
   var webAuth = new auth0.WebAuth({
@@ -37,26 +37,20 @@ window.addEventListener('DOMContentLoaded', function() {
   function handleAuthentication() {
     webAuth.parseHash(function(err, authResult) {
       if (authResult && authResult.accessToken && authResult.idToken) {
+        if (err) {
+          return console.log(err);
+        }
         console.log("user logging in...");
         
         window.location.hash = '';
         setSession(authResult);
         console.log("user logged in");
       
-        axios.post("https://nomadroommate.auth0.com/oauth/token", {
-          data: {
-              "grant_type": "client_credentials",
-              "client_id": "Ejd7BLx2dzfoobybX3d_pTBOxUetI27W",
-              "client_secret": "YOUR_CLIENT_SECRET",
-              "audience": "https://nomadroommate.auth0.com/api/v2/"
-          }
-          })
-          .then(function (response) {
-            console.log("auth0 res: ", response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
+        auth0.client.userInfo(authResult.accessToken, function (err, user) {
+          // Now you have the user's information
+          console.log("user: ", user);
+          
+        });
   
         // axios.get(authResult.idTokenPayload.iss + "/api/v2/users/" + authResult.idTokenPayload.sub + "?api_key=" + authResult.accessToken)
         // .then(function (response) {
