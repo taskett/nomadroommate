@@ -1,7 +1,7 @@
 
 window.addEventListener('DOMContentLoaded', function() {
 
-  console.log("app loaded 2");
+  console.log("app loaded 3");
   
   // Init variables
   var webAuth = new auth0.WebAuth({
@@ -126,9 +126,11 @@ window.addEventListener('DOMContentLoaded', function() {
     webAuth.authorize();
   });
   
+  displayButtons();
 
   // Application starts HERE
   handleAuthentication();
+
 }); 
 
 
