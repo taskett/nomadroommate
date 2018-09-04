@@ -45,23 +45,22 @@ window.addEventListener('DOMContentLoaded', function() {
         window.location.hash = '';
         setSession(authResult);
         console.log("user logged in");
-      
-        webAuth.client.userInfo(authResult.accessToken, function (err, user) {
-          // Now you have the user's information
-          console.log("user: ", user);
-          
+        var userId = authResult.idTokenPayload.sub;
+        var auth0Managment = new auth0.Management({
+          domain: authResult.idTokenPayload.iss,
+          token: authResult.accessToken
         });
-  
-        // axios.get(authResult.idTokenPayload.iss + "/api/v2/users/" + authResult.idTokenPayload.sub + "?api_key=" + authResult.accessToken)
-        // .then(function (response) {
-        //   console.log("FACEBOOK res: ",response);
-        // })
-        // .catch(function (error) {
-        //   console.log(error);
-        // })
+
+        auth0Managment.getUser(userId, function (err, res) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log("user fetched:", res);
+        })
 
         displayButtons();
-      } else if (err) {
+      } 
+      else if (err) {
         console.log(err);
         alert(
           'Error: ' + err.error + '. Check the console for further details.'
@@ -130,6 +129,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Application starts HERE
   handleAuthentication();
+  displayButtons();
 
 }); 
 
