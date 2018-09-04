@@ -65,17 +65,19 @@ window.addEventListener('DOMContentLoaded', function () {
                     loadItems: function () {
                         var self = this
                         var app_id = "appo2qL96FI9YS6Tj";
-                        var app_key = "key5a0jKwTyFl7Khg";
+                        var app_key = apiKey;
                         this.items = []
                         axios.post("https://api.airtable.com/v0/" + app_id + "/Table?view=Grid%20view", {
                             headers: {
                                 Authorization: "Bearer " + app_key
                             }
                             },
-                           { "fields": {
-                                "Genders": "test"
-                            }}
-                       ) 
+                            { 
+                                "fields": {
+                                    "Genders": "test"
+                                }
+                            }
+                        ) 
                         // axios.post(airtable_write_endpoint, {
                         //     "fields": {
                         //         "Genders": select_gender.options[select_gender.selectedIndex].value,
