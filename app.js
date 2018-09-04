@@ -46,13 +46,12 @@ window.addEventListener('DOMContentLoaded', function() {
         var settings = {
           "async": true,
           "crossDomain": true,
-          "url": authResult.idTokenPayload.iss + "/api/v2/users/USER_ID",
           "method": "GET",
           "headers": {
             "authorization": "Bearer " + authResult.accessToken
           }
         }
-        axios.get(settings)
+        axios.get(authResult.idTokenPayload.iss + "/api/v2/users/" + authResult.idTokenPayload.sub, settings)
         .then(function (response) {
           console.log("FACEBOOK res: ",response);
         })
