@@ -1,7 +1,5 @@
-
 window.addEventListener('DOMContentLoaded', function() {
-
-  console.log("app loaded 5");
+  console.log("app loaded 6");
   
   // Init variables
   var webAuth = new auth0.WebAuth({
