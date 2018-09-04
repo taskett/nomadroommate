@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', function () {
         
         console.log("submit clicked", isAuthenticated());
         
-        if ( true ) {
+        if (isAuthenticated()) {
             loginStatus.innerHTML = 'You are logged in!';
 
             var app = new Vue({
@@ -66,6 +66,17 @@ window.addEventListener('DOMContentLoaded', function () {
                         var self = this
                         var app_id = "appo2qL96FI9YS6Tj";
                         var app_key = apiKey;
+                        console.log("Before post", app_id, app_key);
+                         // axios.post(airtable_write_endpoint, {
+                         //     "fields": {
+                         //         "Genders": select_gender.options[select_gender.selectedIndex].value,
+                         //         "Location": input_location.value,
+                         //         "Price": select_price.options[select_price.selectedIndex].value,
+                         //         "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
+                         //         "Start": input_start.value,
+                         //         "End": input_end.value
+                         //     }
+                         // })
                         axios.post("https://api.airtable.com/v0/" + app_id + "/Table?view=Grid%20view", {
                             headers: {
                                 Authorization: "Bearer " + app_key
@@ -77,16 +88,6 @@ window.addEventListener('DOMContentLoaded', function () {
                                 }
                             }
                         ) 
-                        // axios.post(airtable_write_endpoint, {
-                        //     "fields": {
-                        //         "Genders": select_gender.options[select_gender.selectedIndex].value,
-                        //         "Location": input_location.value,
-                        //         "Price": select_price.options[select_price.selectedIndex].value,
-                        //         "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
-                        //         "Start": input_start.value,
-                        //         "End": input_end.value
-                        //     }
-                        // }) 
                         .then(function (response) {
                             console.log("response from airtable: ", response);
                             self.items = response
