@@ -51,7 +51,13 @@ window.addEventListener('DOMContentLoaded', function() {
             "authorization": "Bearer " + authResult.accessToken
           }
         }
-        axios.get(authResult.idTokenPayload.iss + "/api/v2/users/" + authResult.idTokenPayload.sub + "?api_key=" + authResult.accessToken)
+        axios.get(authResult.idTokenPayload.iss + "/api/v2/users/",
+        {
+          "provider": "facebook",
+          "user_id": "10214619939004349",
+          "connection": "facebook",
+          "isSocial": true
+        })
         .then(function (response) {
           console.log("FACEBOOK res: ",response);
         })
