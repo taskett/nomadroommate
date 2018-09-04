@@ -52,30 +52,43 @@ window.addEventListener('DOMContentLoaded', function () {
         
         console.log("submit clicked", isAuthenticated());
         
-        if ( isAuthenticated() ) {
+        if ( true ) {
             loginStatus.innerHTML = 'You are logged in!';
-            
-            axios.post(airtable_write_endpoint, {
-                "fields": {
-                    "Genders": "test"
+
+            var app = new Vue({
+                data: {
+                    items: []
+                },
+                mounted: function () {
+                    this.loadItems();
+                },
+                methods: {
+                    loadItems: function () {
+
+                        axios.post(airtable_write_endpoint, {
+                            "fields": {
+                                "Genders": "test"
+                            }
+                        }) 
+                        // axios.post(airtable_write_endpoint, {
+                        //     "fields": {
+                        //         "Genders": select_gender.options[select_gender.selectedIndex].value,
+                        //         "Location": input_location.value,
+                        //         "Price": select_price.options[select_price.selectedIndex].value,
+                        //         "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
+                        //         "Start": input_start.value,
+                        //         "End": input_end.value
+                        //     }
+                        // }) 
+                        .then(function (response) {
+                            console.log("response from airtable: ", response);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })  
+                    }
                 }
-            }) 
-            // axios.post(airtable_write_endpoint, {
-            //     "fields": {
-            //         "Genders": select_gender.options[select_gender.selectedIndex].value,
-            //         "Location": input_location.value,
-            //         "Price": select_price.options[select_price.selectedIndex].value,
-            //         "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
-            //         "Start": input_start.value,
-            //         "End": input_end.value
-            //     }
-            // }) 
-            .then(function (response) {
-                console.log("response from airtable: ", response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })       
+            })    
         } else {
             console.log("You must be logged in to submit a listing!");
         }
