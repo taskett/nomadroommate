@@ -68,7 +68,7 @@ window.addEventListener('DOMContentLoaded', function () {
                          //         "End": input_end.value
                          //     }
                          // })
-                        axios.post("https://api.airtable.com/v0/" + app_id + "/Table?view=Grid%20view", {
+                        axios.post("https://api.airtable.com/v0/" + app_id + "/Table", {
                                 headers: {
                                     Authorization: "Bearer " + app_key
                                 }
