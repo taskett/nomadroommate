@@ -63,6 +63,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 },
                 methods: {
                     loadItems: function () {
+                        var self = this
                         var app_id = "appo2qL96FI9YS6Tj";
                         var app_key = "key5a0jKwTyFl7Khg";
                         this.items = []
@@ -87,6 +88,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         // }) 
                         .then(function (response) {
                             console.log("response from airtable: ", response);
+                            self.items = response
                         })
                         .catch(function (error) {
                             console.log(error);
