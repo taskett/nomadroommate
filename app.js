@@ -1,7 +1,7 @@
 
 window.addEventListener('DOMContentLoaded', function() {
 
-  console.log("app loaded 4");
+  console.log("app loaded 5");
   
   // Init variables
   var webAuth = new auth0.WebAuth({
@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', function() {
         setSession(authResult);
         console.log("user logged in");
       
-        auth0.client.userInfo(authResult.accessToken, function (err, user) {
+        webAuth.client.userInfo(authResult.accessToken, function (err, user) {
           // Now you have the user's information
           console.log("user: ", user);
           
