@@ -1,7 +1,7 @@
 
 window.addEventListener('DOMContentLoaded', function() {
 
-  console.log("app loaded 1");
+  console.log("app loaded 2");
   
   // Init variables
   var webAuth = new auth0.WebAuth({
@@ -43,16 +43,31 @@ window.addEventListener('DOMContentLoaded', function() {
         setSession(authResult);
         console.log("user logged in");
         
-        loginBtn.style.display = 'none';
-        homeView.style.display = 'inline-block';
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": authResult.idTokenPayload.iss + "/api/v2/users/USER_ID",
+          "method": "GET",
+          "headers": {
+            "authorization": "Bearer " + authResult.accessToken
+          }
+        }
+        axios.get(settings)
+        .then(function (response) {
+          console.log("FACEBOOK res: ",response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+
+        displayButtons();
       } else if (err) {
-        homeView.style.display = 'inline-block';
         console.log(err);
         alert(
           'Error: ' + err.error + '. Check the console for further details.'
         );
+        displayButtons();
       }
-      displayButtons();
     });
   } 
 
