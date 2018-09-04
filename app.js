@@ -1,6 +1,9 @@
 
 window.addEventListener('DOMContentLoaded', function() {
 
+  console.log("app loaded");
+  
+  // Init variables
   var webAuth = new auth0.WebAuth({
     domain: 'nomadroommate.auth0.com',
     clientID: 'xz8vlaLPpNVnFZDhtXLe2ouuBGGqEu2J',
@@ -10,25 +13,16 @@ window.addEventListener('DOMContentLoaded', function() {
     redirectUri: window.location.href
   });
   
-  // ...
   var loginStatus = document.querySelector('.container h4');
   var loginView = document.getElementById('login-view');
   var homeView = document.getElementById('home-view');
-
-  // buttons and event listeners
   var homeViewBtn = document.getElementById('btn-home-view');
   var loginBtn = document.getElementById('btn-login');
   var logoutBtn = document.getElementById('btn-logout');
+ 
 
-  homeViewBtn.addEventListener('click', function() {
-    homeView.style.display = 'inline-block';
-    loginView.style.display = 'none';
-  });
-
-  logoutBtn.addEventListener('click', logout);
-
-  
-   function handleAuthentication() {
+  // Functions to be used
+  function handleAuthentication() {
     webAuth.parseHash(function(err, authResult) {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
@@ -56,14 +50,6 @@ window.addEventListener('DOMContentLoaded', function() {
     localStorage.setItem('expires_at', expiresAt);
   }
 
-  function logout() {
-    // Remove tokens and expiry time from localStorage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
-    displayButtons();
-  }
-
   function isAuthenticated() {
     // Check whether the current time is past the
     // Access Token's expiry time
@@ -84,66 +70,28 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  var loginBtn = document.getElementById('btn-login');
+  // init event listeners
+  homeViewBtn.addEventListener('click', function() {
+    homeView.style.display = 'inline-block';
+    loginView.style.display = 'none';
+  });
 
-  loginBtn.addEventListener('click', function(e) {
+  logoutBtn.addEventListener('click', function (){
+    // Remove tokens and expiry time from localStorage
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+    displayButtons();
+  });
+
+  loginBtn.addEventListener('click', function (e) {
     e.preventDefault();
     webAuth.authorize();
   });
+  
 
-  // ...
+  // Application starts HERE
   handleAuthentication();
-
-
-
-  //Like on submit, check if user is logged in, if yes continue submit, else show pop up
-  // step 1- event listener on submit to see if auth
-
-    console.clear();
-        
-            var airtable_write_endpoint = "https://api.airtable.com/v0/appo2qL96FI9YS6Tj/Table?api_key=key5a0jKwTyFl7Khg";
-        
-            // Write API
-            var form = document.querySelector("#voting-form");
-            var select_gender = document.querySelector("#gender");
-            var input_location = document.querySelector("#location");
-            var select_price = document.querySelector("#price");
-            var select_rooms = document.querySelector("#rooms");
-            var input_start = document.querySelector("#start");
-            var input_end = document.querySelector("#end");
-        
-            form.addEventListener("submit", function (event) {
-            event.preventDefault();
-
-           
-            {
-              if (isAuthenticated()) {
-                loginStatus.innerHTML = 'You are logged in!';
-        
-              axios.post(airtable_write_endpoint, {
-                  "fields": {
-                  "Genders": select_gender.options[select_gender.selectedIndex].value,
-                  "Location": input_location.value,
-                  "Price": select_price.options[select_price.selectedIndex].value,
-                  "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
-                  "Start": input_start.value,
-                  "End": input_end.value
-                  }
-              }) .then(function (response) {
-              console.log(response);
-              alert("Success!");
-            })
-            .catch(function (error) {
-              console.log(error);
-              alert("Error");
-            })       } else {
-              alert("You must be logged in to submit a listing!");
-            }
-          }; 
-            
-      });
-
-    
 }); 
 
 

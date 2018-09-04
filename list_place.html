@@ -1,161 +1,142 @@
 <html lang="en">
-<head>
+  <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="main.css">
     <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120783224-1"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-      
-        gtag('config', 'UA-120783224-1');
-    </script>  
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-120783224-1');
+    </script>
 
-
-    <script type="text/javascript" src="/app.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+  
+    <script type="text/javascript" src="/app.js"></script>
+    <script type="text/javascript" src="/listPlace.js"></script>
 
     <link rel="icon" href="/img/houseicon.png">
     <title>Nomad Roommate Finder</title>
 
-</head>
-<body>
+  </head>
+
+  <body>
     <div class="title">
-        <h1><a href="/index.html">🏡 Nomad Roommate 🌴</a></h1>
-        <p>split super swanky homes around the world</p>
+      <h1><a href="/index.html">🏡 Nomad Roommate 🌴</a></h1>
+      <p>split super swanky homes around the world</p>
     </div>
 
     <div class="content">
-            <nav class="navbar navbar-default">
-              <div class="container-fluid">
-                <div class="navbar-header">
-                  <a class="navbar-brand" href="#">Auth0 - JavaScript</a>
-          
-                  <div onclick="window.location.href='/listings.html'" id="btn-home-view" class="header_button">
-                      Home
-                  </div>
-          
-                  <div id="btn-login" class="header_button">
-                      Log In
-                  </div>
-          
-                  <div id="btn-logout" class="header_button">
-                      Log Out
-                  </div>
-          
-                </div>
-              </div>
-            </nav>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Auth0 - JavaScript</a>
 
-  
-            <main class="container">
-              <!-- home view -->
-              <div id="home-view">
-                <h4></h4>
-              </div>
-              
-            </main>
-          
+            <div onclick="window.location.href='/index.html'" id="btn-home-view" class="header_button">
+              Home
+            </div>
+
+            <div id="btn-login" class="header_button">
+              Log In
+            </div>
+
+            <div id="btn-logout" class="header_button">
+              Log Out
+            </div>
+
           </div>
-        
-          <form action="#0" id="voting-form" class="voting-form">
-                <h1>Submit a Listing</h1>
-                <div> 
-                  <p>Location</p>
-                    <input name="location" type="text" id="location">  <br>
-                  <p>Travel Dates</p>
-                    <label for="start">Start</label>
-                        <input type="date" id="start" name="start"
-                        value="2018-07-22"
-                        min="2018-01-01" max="2018-12-31" />    <br>
-                    <label for="end">End</label>
-                        <input type="date" id="end" name="end"
-                        value="2018-07-29"
-                        min="2018-01-01" max="2018-12-31"/ >         
-                  <p>Price per Room</p>
-                    <select name="price" id="price">
-                      <option value="Under $20/night">Under $20/night</option>
-                      <option value="$20-$40/night">$20-$40/night</option>
-                      <option value="$40-$60/night">$40-$60/night</option>
-                      <option value="$40-$60/night">$60-$80/night</option>
-                      <option value="$40-$60/night">Over $80/night</option>
-                    </select>
-                  <p># of Rooms Available</p>
-                     <select name="rooms" id="rooms">
-                       <option value="1">1</option>
-                       <option value="2">2</option>
-                       <option value="3">3</option>
-                       <option value="4">4</option>
-                       <option value="5">5</option>
-                       <option value="6">6</option>
-                       <option value="7">7</option>
-                       <option value="8">8</option>
-                    </select>                  
-                  <p>Gender(s)</p>    
-                  <select name="gender" id="gender">
-                    <option value="Female Only">Female Only</option>
-                    <option value="Male Only">Male Only</option>
-                    <option value="Coed">Coed</option>
-                  </select>
-                </select>
-                </div>
-                <div>
-                  <input type="submit" value="Submit" id="buttonz">
-                </div>
-              </form>
-
-            <style>
-                body {
-                font-family: Sans-Serif;
-                margin: 0;
-                }
-                h1, h2 {
-                font-size: 20px;
-                }
-        
-                .voting-form {
-                background: #eee;
-                padding: 20px;
-                margin: 0 0 20px 0;
-                }
-                select {
-                width: 200px;
-                text-align: center;
-                }
-            </style>
-          
+        </div>
+      </nav>
 
 
-          <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
-          <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
-          <script>
-            // Initialize Firebase
-            var config = {
-              apiKey: "AIzaSyAqEoG596HvXLXFi5KQzc9IOK5N34ejjnA",
-              authDomain: "nomad-roommate.firebaseapp.com",
-              databaseURL: "https://nomad-roommate.firebaseio.com",
-              projectId: "nomad-roommate",
-              storageBucket: "nomad-roommate.appspot.com",
-              messagingSenderId: "311257395463"
-            };
-            firebase.initializeApp(config);
+      <main class="container">
+        <!-- home view -->
+        <div id="home-view">
+          <h4></h4>
+        </div>
 
-            // get request
-            var database = firebase.database();
-            var userId = firebase.auth().currentUser.uid;
-            return database.ref('/apikey/' + userId).once('value').then(function(res) {
-              console.log('res', res);
-            });
-          </script>
-          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
-          <script async defer src="https://donthuntme.com/dhm.js"></script>      
-     </body>     
+      </main>
+
+    </div>
+
+    <form action="#0" id="voting-form" class="voting-form">
+      <h1>Submit a Listing</h1>
+      <div>
+        <p>Location</p>
+        <input name="location" value="test" required type="text" id="location"> <br>
+
+        <p>Travel Dates</p>
+        <label for="start">Start</label>
+<input required type="date" id="start" value="2018-01-01" name="start" min="2018-01-01" /> <br>
+
+        <label for="end">End</label>
+<input required type="date" id="end" value="2018-01-01" name="end" min="2018-01-01" />
+
+        <p>Price per Room</p>
+        <select required name="price" id="price">
+          <!-- <option value="" selected disabled style='display:none;'> Select a price </option> -->
+          <option value="Under $20/night">Under $20/night</option>
+          <option value="$20-$40/night">$20-$40/night</option>
+          <option value="$40-$60/night">$40-$60/night</option>
+          <option value="$40-$60/night">$60-$80/night</option>
+          <option value="$40-$60/night">Over $80/night</option>
+        </select>
+
+        <p># of Rooms Available</p>
+        <select name="rooms" id="rooms">
+          <!-- <option value="" selected disabled style='display:none;'> Select # of rooms </option> -->
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+
+        <p>Gender(s)</p>
+        <select name="gender" id="gender">
+          <!-- <option value="" selected disabled style='display:none;'> Select gender(s) </option> -->
+          <option value="Female Only">Female Only</option>
+          <option value="Male Only">Male Only</option>
+          <option value="Coed">Coed</option>
+        </select>
+        </select>
+      </div>
+      <div>
+        <input type="submit" value="Submit" id="buttonz">
+      </div>
+    </form>
+
+    <style>
+      body {
+        font-family: Sans-Serif;
+        margin: 0;
+      }
+      h1, h2 {
+        font-size: 20px;
+      }
+      .voting-form {
+        background: #eee;
+        padding: 20px;
+        margin: 0 0 20px 0;
+      }
+      select {
+        width: 200px;
+        text-align: center;
+      }
+    </style>
+
+
+
+  </body>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+  <script async defer src="https://donthuntme.com/dhm.js"></script>
 </html>
