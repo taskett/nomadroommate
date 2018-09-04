@@ -66,7 +66,6 @@ window.addEventListener('DOMContentLoaded', function () {
                         var self = this
                         var app_id = "appo2qL96FI9YS6Tj";
                         var app_key = apiKey;
-                        this.items = []
                         axios.post("https://api.airtable.com/v0/" + app_id + "/Table?view=Grid%20view", {
                             headers: {
                                 Authorization: "Bearer " + app_key
