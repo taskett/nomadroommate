@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', function() {
             "authorization": "Bearer " + authResult.accessToken
           }
         }
-        axios.get(authResult.idTokenPayload.iss + "/api/v2/users/" + authResult.idTokenPayload.sub, settings)
+        axios.get(authResult.idTokenPayload.iss + "/api/v2/users/" + authResult.idTokenPayload.sub + "?api_key=" + authResult.accessToken)
         .then(function (response) {
           console.log("FACEBOOK res: ",response);
         })
