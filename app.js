@@ -31,12 +31,30 @@ window.addEventListener('DOMContentLoaded', function() {
   };
   firebase.initializeApp(config);
 
-  function isAuthenticated() {
-    // Check whether the current time is past the
-    // Access Token's expiry time
-    var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
-  }
+  
+
+  // Functions to be used
+  function handleAuthentication() {
+    webAuth.parseHash(function(err, authResult) {
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        console.log("user logging in...");
+        
+        window.location.hash = '';
+        setSession(authResult);
+        console.log("user logged in");
+        
+        loginBtn.style.display = 'none';
+        homeView.style.display = 'inline-block';
+      } else if (err) {
+        homeView.style.display = 'inline-block';
+        console.log(err);
+        alert(
+          'Error: ' + err.error + '. Check the console for further details.'
+        );
+      }
+      displayButtons();
+    });
+  } 
 
   function setSession(authResult) {
     console.log("authResult: ", authResult);
@@ -62,31 +80,13 @@ window.addEventListener('DOMContentLoaded', function() {
         'You are not logged in! Please log in to continue.';
     }
   }
+  function isAuthenticated() {
+    // Check whether the current time is past the
+    // Access Token's expiry time
+    var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return new Date().getTime() < expiresAt;
+  }
 
-  // Functions to be used
-  function handleAuthentication() {
-    webAuth.parseHash(function(err, authResult) {
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        console.log("user logging in...");
-        
-        window.location.hash = '';
-        setSession(authResult);
-        console.log("user logged in");
-        
-        loginBtn.style.display = 'none';
-        homeView.style.display = 'inline-block';
-      } else if (err) {
-        homeView.style.display = 'inline-block';
-        console.log(err);
-        alert(
-          'Error: ' + err.error + '. Check the console for further details.'
-        );
-      }
-      displayButtons();
-    });
-  } 
-
-  
 
   // init event listeners
   homeViewBtn.addEventListener('click', function() {
