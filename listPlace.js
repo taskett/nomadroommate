@@ -1,7 +1,6 @@
 window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
-    var airtable_write_endpoint = "https://api.airtable.com/v0/appo2qL96FI9YS6Tj/Table?api_key=keyt10K2zatmczu8S";
     var loginStatus = document.querySelector('.container h4');
 
     // Write API
@@ -64,12 +63,18 @@ window.addEventListener('DOMContentLoaded', function () {
                 },
                 methods: {
                     loadItems: function () {
-
-                        axios.post(airtable_write_endpoint, {
-                            "fields": {
-                                "Genders": "test"
+                        var app_id = "appo2qL96FI9YS6Tj";
+                        var app_key = "key5a0jKwTyFl7Khg";
+                        this.items = []
+                        axios.post("https://api.airtable.com/v0/" + app_id + "/Table?view=Grid%20view", {
+                            headers: {
+                                Authorization: "Bearer " + app_key
                             }
-                        }) 
+                            },
+                           { "fields": {
+                                "Genders": "test"
+                            }}
+                       ) 
                         // axios.post(airtable_write_endpoint, {
                         //     "fields": {
                         //         "Genders": select_gender.options[select_gender.selectedIndex].value,
