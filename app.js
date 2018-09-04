@@ -1,7 +1,7 @@
 
 window.addEventListener('DOMContentLoaded', function() {
 
-  console.log("app loaded");
+  console.log("app loaded 1");
   
   // Init variables
   var webAuth = new auth0.WebAuth({
@@ -65,9 +65,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Functions to be used
   function handleAuthentication() {
-    if (isAuthenticated()) {
-      return;
-    }
     webAuth.parseHash(function(err, authResult) {
       if (authResult && authResult.accessToken && authResult.idToken) {
         console.log("user logging in...");
