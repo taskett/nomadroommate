@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
-    var airtable_write_endpoint = "https://api.airtable.com/v0/appo2qL96FI9YS6Tj/Table?api_key=key5a0jKwTyFl7Khg";
+    var airtable_write_endpoint = "https://api.airtable.com/v0/appo2qL96FI9YS6Tj/Table?api_key=keyt10K2zatmczu8S";
     var loginStatus = document.querySelector('.container h4');
 
     // Write API
@@ -54,19 +54,24 @@ window.addEventListener('DOMContentLoaded', function () {
         
         if ( isAuthenticated() ) {
             loginStatus.innerHTML = 'You are logged in!';
-
+            
             axios.post(airtable_write_endpoint, {
                 "fields": {
-                    "Genders": select_gender.options[select_gender.selectedIndex].value,
-                    "Location": input_location.value,
-                    "Price": select_price.options[select_price.selectedIndex].value,
-                    "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
-                    "Start": input_start.value,
-                    "End": input_end.value
+                    "Genders": "test"
                 }
             }) 
+            // axios.post(airtable_write_endpoint, {
+            //     "fields": {
+            //         "Genders": select_gender.options[select_gender.selectedIndex].value,
+            //         "Location": input_location.value,
+            //         "Price": select_price.options[select_price.selectedIndex].value,
+            //         "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
+            //         "Start": input_start.value,
+            //         "End": input_end.value
+            //     }
+            // }) 
             .then(function (response) {
-                console.log("posted to airtabe: ", response);
+                console.log("response from airtable: ", response);
             })
             .catch(function (error) {
                 console.log(error);

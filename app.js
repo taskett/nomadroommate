@@ -27,6 +27,8 @@ window.addEventListener('DOMContentLoaded', function() {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         setSession(authResult);
+        console.log("user logged in");
+        
         loginBtn.style.display = 'none';
         homeView.style.display = 'inline-block';
       } else if (err) {
@@ -41,6 +43,8 @@ window.addEventListener('DOMContentLoaded', function() {
   } 
 
   function setSession(authResult) {
+    console.log("authResult: ", authResult);
+    
     // Set the time that the Access Token will expire at
     var expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime()
@@ -77,6 +81,10 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   logoutBtn.addEventListener('click', function (){
+    console.log("user logged out");
+    //TODO: add message for user
+    // upselling to get them to come back?
+
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
