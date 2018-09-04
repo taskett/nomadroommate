@@ -20,6 +20,16 @@ window.addEventListener('DOMContentLoaded', function() {
   var loginBtn = document.getElementById('btn-login');
   var logoutBtn = document.getElementById('btn-logout');
  
+  // Initialize Firebase
+  var config = {
+      apiKey: "AIzaSyAqEoG596HvXLXFi5KQzc9IOK5N34ejjnA",
+      authDomain: "nomad-roommate.firebaseapp.com",
+      databaseURL: "https://nomad-roommate.firebaseio.com",
+      projectId: "nomad-roommate",
+      storageBucket: "nomad-roommate.appspot.com",
+      messagingSenderId: "311257395463"
+  };
+  firebase.initializeApp(config);
 
   // Functions to be used
   function handleAuthentication() {

@@ -12,16 +12,7 @@ window.addEventListener('DOMContentLoaded', function () {
     var input_start = document.querySelector("#start");
     var input_end = document.querySelector("#end");
     
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAqEoG596HvXLXFi5KQzc9IOK5N34ejjnA",
-        authDomain: "nomad-roommate.firebaseapp.com",
-        databaseURL: "https://nomad-roommate.firebaseio.com",
-        projectId: "nomad-roommate",
-        storageBucket: "nomad-roommate.appspot.com",
-        messagingSenderId: "311257395463"
-    };
-    firebase.initializeApp(config);
+
     console.log("Initializing Firebase...");
     var database = firebase.database()
     var apiKey;
@@ -49,44 +40,29 @@ window.addEventListener('DOMContentLoaded', function () {
             return
         }
         
-        console.log("submit clicked", isAuthenticated());
-        
         if (isAuthenticated()) {
             loginStatus.innerHTML = 'You are logged in!';
 
-                        var self = this
-                        var app_id = "appo2qL96FI9YS6Tj";
-                        var app_key = apiKey;
-                        console.log("Before post 1", app_id, app_key);
-                         // axios.post(airtable_write_endpoint, {
-                         //     "fields": {
-                         //         "Genders": select_gender.options[select_gender.selectedIndex].value,
-                         //         "Location": input_location.value,
-                         //         "Price": select_price.options[select_price.selectedIndex].value,
-                         //         "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
-                         //         "Start": input_start.value,
-                         //         "End": input_end.value
-                         //     }
-                         // })
-                        axios.post("https://api.airtable.com/v0/" + app_id + "/Table", {
-                                headers: {
-                                    Authorization: "Bearer " + app_key
-                                }
-                            },
-                            { 
-                                "fields": {
-                                    "Genders": "test"
-                                }
-                            }
-                        ) 
-                        .then(function (response) {
-                            console.log("response from airtable: ", response);
-                            self.items = response
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        })  
-                     
+            const app_id = "appo2qL96FI9YS6Tj";
+            const app_key = apiKey;
+            
+            axios.post('https://api.airtable.com/v0/' + app_id + '/Table?api_key=' + app_key, {
+                fields: {
+                    "Genders": select_gender.options[select_gender.selectedIndex].value,
+                    "Location": input_location.value,
+                    "Price": select_price.options[select_price.selectedIndex].value,
+                    "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
+                    "Start": input_start.value,
+                    "End": input_end.value
+                }
+            })
+            .then(function (record) {
+                console.log("response from airtable: ", record);
+                alert(record.data.fields.Location + " just added!");
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
         } else {
             console.log("You must be logged in to submit a listing!");
         }
