@@ -33,6 +33,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Functions to be used
   function handleAuthentication() {
+    console.log("user logging in...");
+
     webAuth.parseHash(function(err, authResult) {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
