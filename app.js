@@ -42,28 +42,29 @@ window.addEventListener('DOMContentLoaded', function() {
         window.location.hash = '';
         setSession(authResult);
         console.log("user logged in");
-        
-        var settings = {
-          "async": true,
-          "crossDomain": true,
-          "method": "GET",
-          "headers": {
-            "authorization": "Bearer " + authResult.accessToken
+      
+        axios.post("https://nomadroommate.auth0.com/oauth/token", {
+          data: {
+              "grant_type": "client_credentials",
+              "client_id": "Ejd7BLx2dzfoobybX3d_pTBOxUetI27W",
+              "client_secret": "YOUR_CLIENT_SECRET",
+              "audience": "https://nomadroommate.auth0.com/api/v2/"
           }
-        }
-        axios.get(authResult.idTokenPayload.iss + "/api/v2/users/",
-        {
-          "provider": "facebook",
-          "user_id": "10214619939004349",
-          "connection": "facebook",
-          "isSocial": true
-        })
-        .then(function (response) {
-          console.log("FACEBOOK res: ",response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        })
+          })
+          .then(function (response) {
+            console.log("auth0 res: ", response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+  
+        // axios.get(authResult.idTokenPayload.iss + "/api/v2/users/" + authResult.idTokenPayload.sub + "?api_key=" + authResult.accessToken)
+        // .then(function (response) {
+        //   console.log("FACEBOOK res: ",response);
+        // })
+        // .catch(function (error) {
+        //   console.log(error);
+        // })
 
         displayButtons();
       } else if (err) {
