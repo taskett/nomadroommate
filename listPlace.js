@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         var self = this
                         var app_id = "appo2qL96FI9YS6Tj";
                         var app_key = apiKey;
-                        console.log("Before post", app_id, app_key);
+                        console.log("Before post 1", app_id, app_key);
                          // axios.post(airtable_write_endpoint, {
                          //     "fields": {
                          //         "Genders": select_gender.options[select_gender.selectedIndex].value,
