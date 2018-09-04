@@ -54,15 +54,6 @@ window.addEventListener('DOMContentLoaded', function () {
         if (isAuthenticated()) {
             loginStatus.innerHTML = 'You are logged in!';
 
-            var app = new Vue({
-                data: {
-                    items: []
-                },
-                mounted: function () {
-                    this.loadItems();
-                },
-                methods: {
-                    loadItems: function () {
                         var self = this
                         var app_id = "appo2qL96FI9YS6Tj";
                         var app_key = apiKey;
@@ -78,9 +69,9 @@ window.addEventListener('DOMContentLoaded', function () {
                          //     }
                          // })
                         axios.post("https://api.airtable.com/v0/" + app_id + "/Table?view=Grid%20view", {
-                            headers: {
-                                Authorization: "Bearer " + app_key
-                            }
+                                headers: {
+                                    Authorization: "Bearer " + app_key
+                                }
                             },
                             { 
                                 "fields": {
@@ -95,9 +86,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         .catch(function (error) {
                             console.log(error);
                         })  
-                    }
-                }
-            })    
+                     
         } else {
             console.log("You must be logged in to submit a listing!");
         }
