@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function() {
-  console.log("app loaded 6");
+  console.log("app loaded 7");
   
   // Init variables
   var webAuth = new auth0.WebAuth({
@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', function() {
         var userId = authResult.idTokenPayload.sub;
         var auth0Managment = new auth0.Management({
           domain: authResult.idTokenPayload.iss,
-          token: authResult.accessToken
+          token: authResult.idToken
         });
 
         auth0Managment.getUser(userId, function (err, res) {
