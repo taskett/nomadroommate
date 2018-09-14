@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 12");
+  console.log("app loaded 14");
 
   var authDomain = 'nomadroommate.auth0.com'
   var authAudience = 'https://nomadroommate.auth0.com/userinfo'
@@ -50,14 +50,14 @@ window.addEventListener('DOMContentLoaded', function () {
         var userId = authResult.idTokenPayload.sub;
 
 
-        var authorized = new auth0.Authentication({
-          domain: authDomain,
-          clientID: authClientId
-        }, function (res) {
-          console.log("authorized", res);
+        // var authorized = new auth0.Authentication({
+        //   domain: authDomain,
+        //   clientID: authClientId
+        // }, function (res) {
+        //   console.log("authorized", res);
 
-        });
-        console.log("authorized2", authorized);
+        // });
+        // console.log("authorized2", authorized);
 
 
         var oauthToken = new auth0.oauthToken({}, function (res) {
