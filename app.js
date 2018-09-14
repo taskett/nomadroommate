@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 10");
+  console.log("app loaded 11");
 
   var authDomain = 'nomadroommate.auth0.com'
   // Init variables
