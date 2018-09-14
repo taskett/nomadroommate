@@ -165,6 +165,13 @@ body {
     top: 50%;
     left: 25%;
  }
+ #roommate_loggedin {
+    display: block;
+    position: fixed;
+    float: left;
+    top: 50%;
+    left: 25%;
+ }
 
  #room {
     position: fixed;

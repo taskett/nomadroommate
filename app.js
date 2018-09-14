@@ -1,6 +1,10 @@
 window.addEventListener('DOMContentLoaded', function () {
   console.log("app loaded 15");
 
+  var globalVariable = {
+    userData: null
+  };
+
   var authDomain = 'nomadroommate.auth0.com'
   var authAudience = 'https://nomadroommate.auth0.com/userinfo'
   var authClientId = 'xz8vlaLPpNVnFZDhtXLe2ouuBGGqEu2J'
@@ -20,6 +24,8 @@ window.addEventListener('DOMContentLoaded', function () {
   var homeViewBtn = document.getElementById('btn-home-view');
   var loginBtn = document.getElementById('btn-login');
   var logoutBtn = document.getElementById('btn-logout');
+  var btnListNewItems = document.getElementById('roommate');
+  var btnListNewItemsLoggedin = document.getElementById('roommate_loggedin');
 
   // Initialize Firebase
   var config = {
@@ -31,7 +37,6 @@ window.addEventListener('DOMContentLoaded', function () {
     messagingSenderId: "311257395463"
   };
   firebase.initializeApp(config);
-
 
 
   // Functions to be used
@@ -46,40 +51,7 @@ window.addEventListener('DOMContentLoaded', function () {
         
         setSession(authResult);
 
-        console.log("user logged in", authResult);
-        var userId = authResult.idTokenPayload.sub;
-
-
-        // var authorized = new auth0.Authentication({
-        //   domain: authDomain,
-        //   clientID: authClientId
-        // }, function (res) {
-        //   console.log("authorized", res);
-
-        // });
-        // console.log("authorized2", authorized);
-
-
-        var oauthToken = new auth0.oauthToken({}, function (res) {
-          console.log("oauthToken: ", res);
-          
-        })
-
-        console.log("oauthToken: ", oauthToken);
-        
-
-        // var auth0Managment = new auth0.Management({
-        //   domain: authDomain,
-        //   token: "{ACCESS_TOKEN_FROM_THE_USER}"
-        // });
-
-        // console.log("auth manager: ", auth0Managment);
-        
-
-        // auth0Managment.getUser(userId, function (err, res) {
-        //   if (err) return console.log("in get user: ",err);
-        //   console.log("user fetched:", res);
-        // })
+        globalVariable.userData = authResult.idTokenPayload
 
         displayButtons();
       } 
@@ -106,6 +78,8 @@ window.addEventListener('DOMContentLoaded', function () {
   function displayButtons() {
     if (isAuthenticated()) {
       loginBtn.style.display = 'none';
+      btnListNewItemsLoggedin.style.display = 'block';
+      btnListNewItems.style.display = 'none';
       logoutBtn.style.display = 'inline-block';
       loginStatus.innerHTML = 'You are logged in!';
     } 
@@ -148,10 +122,17 @@ window.addEventListener('DOMContentLoaded', function () {
     webAuth.authorize();
   });
 
+  btnListNewItems.addEventListener('click', function (e) {
+    e.preventDefault();
+    webAuth.authorize();
+  });
+
   displayButtons();
 
   // Application starts HERE
   handleAuthentication();
+
   displayButtons();
 
+  console.log("global variable state: ", globalVariable);
 });

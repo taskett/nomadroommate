@@ -12,6 +12,8 @@ window.addEventListener('DOMContentLoaded', function () {
     var input_start = document.querySelector("#start");
     var input_end = document.querySelector("#end");
     
+    console.log("in another js file: ", globalVariable);
+    
 
     console.log("Initializing Firebase...");
     var database = firebase.database()
