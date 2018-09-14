@@ -1,3 +1,7 @@
+
+if (!isAuthenticated()) window.location.href = '/index.html'
+
+
 window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
@@ -24,12 +28,7 @@ window.addEventListener('DOMContentLoaded', function () {
         apiKey = res.node_.value_
     });
 
-    function isAuthenticated() {
-        // Check whether the current time is past the
-        // Access Token's expiry time
-        var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-        return new Date().getTime() < expiresAt;
-    }
+    
     function displayButtons() {
         if (isAuthenticated()) {
             loginBtn.style.display = 'none';
@@ -85,7 +84,6 @@ window.addEventListener('DOMContentLoaded', function () {
             console.log("You must be logged in to submit a listing!");
         }
     });
-
 
      displayButtons()
 
