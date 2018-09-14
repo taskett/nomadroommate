@@ -37,7 +37,7 @@ function isAuthenticated() {
 
 
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 16");
+  console.log("app loaded 17");
   
   var btnListNewItems = document.getElementById('roommate');
   var btnListNewItemsLoggedin = document.getElementById('roommate_loggedin');
