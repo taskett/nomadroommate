@@ -1,31 +1,17 @@
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 11");
+  console.log("app loaded 12");
 
   var authDomain = 'nomadroommate.auth0.com'
+  var authAudience = 'https://nomadroommate.auth0.com/userinfo'
   // Init variables
   var webAuth = new auth0.WebAuth({
     domain: authDomain,
     clientID: 'xz8vlaLPpNVnFZDhtXLe2ouuBGGqEu2J',
     responseType: 'token id_token',
-    audience: 'https://nomadroommate.auth0.com/userinfo',
+    audience: authAudience,
     scope: 'openid',
     redirectUri: window.location.href
   });
-
-  axios.post('https://' + authDomain + '/oauth/token', )
-    .then(function (res) {
-      console.log("response from auth: ", res);
-
-      // var auth0Managment = new auth0.Management({
-      //   domain: authDomain,
-      //   token: authResult.idToken
-      // });
-
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-  
 
   var loginStatus = document.querySelector('.container h4');
   var loginView = document.getElementById('login-view');
@@ -62,15 +48,42 @@ window.addEventListener('DOMContentLoaded', function () {
         console.log("user logged in", authResult);
         var userId = authResult.idTokenPayload.sub;
 
-        
 
-        console.log("auth manager: ", auth0Managment);
-        
+        var authorized = new auth0.authorize({
+          audience: authAudience,
+          scope: 'read:order write:order',
+          responseType: 'token',
+          redirectUri: window.location.href
+        }, function (res) {
+          console.log("authorized", res);
 
-        auth0Managment.getUser(userId, function (err, res) {
-          if (err) return console.log("in get user: ",err);
-          console.log("user fetched:", res);
+        });
+        console.log("authorized2", authorized);
+
+
+
+        var oauthToken = new auth0.oauthToken({}, function (res) {
+          console.log("oauthToken: ", res);
+          
         })
+
+        console.log("oauthToken: ", oauthToken);
+        
+
+        // var auth0Managment = new auth0.Management({
+        //   domain: authDomain,
+        //   token: "{ACCESS_TOKEN_FROM_THE_USER}"
+        // });
+
+        
+
+        // console.log("auth manager: ", auth0Managment);
+        
+
+        // auth0Managment.getUser(userId, function (err, res) {
+        //   if (err) return console.log("in get user: ",err);
+        //   console.log("user fetched:", res);
+        // })
 
         displayButtons();
       } 
