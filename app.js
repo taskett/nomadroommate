@@ -1,15 +1,31 @@
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 9");
+  console.log("app loaded 10");
 
+  var authDomain = 'nomadroommate.auth0.com'
   // Init variables
   var webAuth = new auth0.WebAuth({
-    domain: 'nomadroommate.auth0.com',
+    domain: authDomain,
     clientID: 'xz8vlaLPpNVnFZDhtXLe2ouuBGGqEu2J',
     responseType: 'token id_token',
     audience: 'https://nomadroommate.auth0.com/userinfo',
     scope: 'openid',
     redirectUri: window.location.href
   });
+
+  axios.post('https://' + authDomain + '/oauth/token', )
+    .then(function (res) {
+      console.log("response from auth: ", res);
+
+      // var auth0Managment = new auth0.Management({
+      //   domain: authDomain,
+      //   token: authResult.idToken
+      // });
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  
 
   var loginStatus = document.querySelector('.container h4');
   var loginView = document.getElementById('login-view');
@@ -45,10 +61,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
         console.log("user logged in", authResult);
         var userId = authResult.idTokenPayload.sub;
-        var auth0Managment = new auth0.Management({
-          domain: authResult.idTokenPayload.iss,
-          token: authResult.idToken
-        });
+
+        
+
+        console.log("auth manager: ", auth0Managment);
+        
 
         auth0Managment.getUser(userId, function (err, res) {
           if (err) return console.log("in get user: ",err);
