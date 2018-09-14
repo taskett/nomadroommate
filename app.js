@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 14");
+  console.log("app loaded 15");
 
   var authDomain = 'nomadroommate.auth0.com'
   var authAudience = 'https://nomadroommate.auth0.com/userinfo'
@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function () {
     clientID: authClientId,
     responseType: 'token id_token',
     audience: authAudience,
-    scope: 'openid',
+    scope: 'openid profile',
     redirectUri: window.location.href
   });
 
@@ -72,8 +72,6 @@ window.addEventListener('DOMContentLoaded', function () {
         //   domain: authDomain,
         //   token: "{ACCESS_TOKEN_FROM_THE_USER}"
         // });
-
-        
 
         // console.log("auth manager: ", auth0Managment);
         
