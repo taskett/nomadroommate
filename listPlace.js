@@ -55,7 +55,9 @@ window.addEventListener('DOMContentLoaded', function () {
                     "Price": select_price.options[select_price.selectedIndex].value,
                     "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
                     "Start": input_start.value,
-                    "End": input_end.value
+                    "End": input_end.value,
+                    "Username": globalVariable.userData.name,
+                    "Userphoto": globalVariable.userData.picture,
                 }
             })
             .then(function (record) {

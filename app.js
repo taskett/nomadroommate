@@ -1,9 +1,11 @@
+ var globalVariable = {
+   userData: null,
+ };
+
 window.addEventListener('DOMContentLoaded', function () {
   console.log("app loaded 15");
 
-  var globalVariable = {
-    userData: null
-  };
+ 
 
   var authDomain = 'nomadroommate.auth0.com'
   var authAudience = 'https://nomadroommate.auth0.com/userinfo'
