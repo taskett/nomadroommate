@@ -7,7 +7,7 @@
     <script type="text/javascript" src="https://unpkg.com/vue"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
     <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
-    
+
     <script type="text/javascript" src="/app.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120783224-1"></script>
@@ -75,6 +75,8 @@
                 <p><strong>Rooms Available: </strong>{{ item['fields']['Rooms'] }}</p>
                 <p><strong>Travel Dates: </strong>{{ item['fields']['Start'] }} through {{ item['fields']['End'] }}</p>
                 <p><strong>Gender(s): </strong>{{ item['fields']['Genders'] }}</p>
+                <p><strong>Name: </strong>{{ item['fields']['Username'] }}</p>
+                <img :src="item['fields']['Userphoto']"></img>
             </li>
         </ul>
     </div>
