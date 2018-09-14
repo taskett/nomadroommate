@@ -27,7 +27,6 @@ var config = {
   storageBucket: "nomad-roommate.appspot.com",
   messagingSenderId: "311257395463"
 };
-firebase.initializeApp(config);
 
 
 function isAuthenticated() {
@@ -41,7 +40,7 @@ function isAuthenticated() {
 
 
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 15");
+  console.log("app loaded 16");
 
   var homeViewBtn = document.getElementById('btn-home-view');
   var loginBtn = document.getElementById('btn-login');
@@ -49,6 +48,8 @@ window.addEventListener('DOMContentLoaded', function () {
   var loginStatus = document.querySelector('.container h4');
   var loginView = document.getElementById('login-view');
   var homeView = document.getElementById('home-view');
+
+  firebase.initializeApp(config);
 
   // Functions to be used
   function handleAuthentication() {
