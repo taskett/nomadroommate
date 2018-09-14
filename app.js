@@ -1,6 +1,15 @@
  var globalVariable = {
    userData: null,
  };
+  var loginStatus = document.querySelector('.container h4');
+  var loginView = document.getElementById('login-view');
+  var homeView = document.getElementById('home-view');
+  var homeViewBtn = document.getElementById('btn-home-view');
+  var loginBtn = document.getElementById('btn-login');
+  var logoutBtn = document.getElementById('btn-logout');
+  var btnListNewItems = document.getElementById('roommate');
+  var btnListNewItemsLoggedin = document.getElementById('roommate_loggedin');
+
 
 window.addEventListener('DOMContentLoaded', function () {
   console.log("app loaded 15");
@@ -20,14 +29,6 @@ window.addEventListener('DOMContentLoaded', function () {
     redirectUri: window.location.href
   });
 
-  var loginStatus = document.querySelector('.container h4');
-  var loginView = document.getElementById('login-view');
-  var homeView = document.getElementById('home-view');
-  var homeViewBtn = document.getElementById('btn-home-view');
-  var loginBtn = document.getElementById('btn-login');
-  var logoutBtn = document.getElementById('btn-logout');
-  var btnListNewItems = document.getElementById('roommate');
-  var btnListNewItemsLoggedin = document.getElementById('roommate_loggedin');
 
   // Initialize Firebase
   var config = {

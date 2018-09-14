@@ -30,6 +30,20 @@ window.addEventListener('DOMContentLoaded', function () {
         var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
         return new Date().getTime() < expiresAt;
     }
+    function displayButtons() {
+        if (isAuthenticated()) {
+            loginBtn.style.display = 'none';
+            btnListNewItemsLoggedin.style.display = 'block';
+            btnListNewItems.style.display = 'none';
+            logoutBtn.style.display = 'inline-block';
+            loginStatus.innerHTML = 'You are logged in!';
+        } else {
+            loginBtn.style.display = 'inline-block';
+            logoutBtn.style.display = 'none';
+            loginStatus.innerHTML =
+                'You are not logged in! Please log in to continue.';
+        }
+    }
 
     // on form submit
     form.addEventListener("submit", function (event) {
@@ -71,5 +85,8 @@ window.addEventListener('DOMContentLoaded', function () {
             console.log("You must be logged in to submit a listing!");
         }
     });
+
+
+     displayButtons()
 
 });
