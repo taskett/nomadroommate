@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 8");
+  console.log("app loaded 9");
 
   // Init variables
   var webAuth = new auth0.WebAuth({
@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function handleAuthentication() {
     webAuth.parseHash(function (err, authResult) {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        if (err) return console.log(err);
+        if (err) return console.log("on webauth start: ", err);
         
         console.log("user logging in...");
 
@@ -51,9 +51,7 @@ window.addEventListener('DOMContentLoaded', function () {
         });
 
         auth0Managment.getUser(userId, function (err, res) {
-          if (err) {
-            return console.log(err);
-          }
+          if (err) return console.log("in get user: ",err);
           console.log("user fetched:", res);
         })
 
