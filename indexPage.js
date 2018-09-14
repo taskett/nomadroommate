@@ -8,7 +8,10 @@ window.addEventListener('DOMContentLoaded', function () {
         if (isAuthenticated()) {
             btnListNewItemsLoggedin.style.display = 'block';
             btnListNewItems.style.display = 'none';
-        } else {
+        } 
+        else {
+            btnListNewItemsLoggedin.style.display = 'none';
+            btnListNewItems.style.display = 'block';
             loginStatus.innerHTML =
                 'You are not logged in! Please log in to continue.';
         }

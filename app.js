@@ -64,6 +64,9 @@ window.addEventListener('DOMContentLoaded', function () {
         
         setSession(authResult);
 
+        console.log("authResult: ", authResult.idTokenPayload);
+        
+
         globalVariable.userData = authResult.idTokenPayload
 
         displayButtons();
@@ -91,8 +94,6 @@ window.addEventListener('DOMContentLoaded', function () {
   function displayButtons() {
     if (isAuthenticated()) {
       loginBtn.style.display = 'none';
-      btnListNewItemsLoggedin.style.display = 'block';
-      btnListNewItems.style.display = 'none';
       logoutBtn.style.display = 'inline-block';
       loginStatus.innerHTML = 'You are logged in!';
     } 
