@@ -3,23 +3,8 @@
  };
 
 
-
-var authDomain = 'nomadroommate.auth0.com'
-var authAudience = 'https://nomadroommate.auth0.com/userinfo'
-var authClientId = 'xz8vlaLPpNVnFZDhtXLe2ouuBGGqEu2J'
-// Init variables
-var webAuth = new auth0.WebAuth({
-  domain: authDomain,
-  clientID: authClientId,
-  responseType: 'token id_token',
-  audience: authAudience,
-  scope: 'openid profile',
-  redirectUri: window.location.href
-});
-
-
 // Initialize Firebase
-var config = {
+var firebaseConfig = {
   apiKey: "AIzaSyAqEoG596HvXLXFi5KQzc9IOK5N34ejjnA",
   authDomain: "nomad-roommate.firebaseapp.com",
   databaseURL: "https://nomad-roommate.firebaseio.com",
@@ -36,12 +21,26 @@ function isAuthenticated() {
   return new Date().getTime() < expiresAt;
 }
 
+ var authDomain = 'nomadroommate.auth0.com'
+ var authAudience = 'https://nomadroommate.auth0.com/userinfo'
+ var authClientId = 'xz8vlaLPpNVnFZDhtXLe2ouuBGGqEu2J'
 
+ // Init variables
+ var webAuth = new auth0.WebAuth({
+   domain: authDomain,
+   clientID: authClientId,
+   responseType: 'token id_token',
+   audience: authAudience,
+   scope: 'openid profile',
+   redirectUri: window.location.href
+ });
 
 
 window.addEventListener('DOMContentLoaded', function () {
   console.log("app loaded 16");
-
+  
+  var btnListNewItems = document.getElementById('roommate');
+  var btnListNewItemsLoggedin = document.getElementById('roommate_loggedin');
   var homeViewBtn = document.getElementById('btn-home-view');
   var loginBtn = document.getElementById('btn-login');
   var logoutBtn = document.getElementById('btn-logout');
@@ -49,7 +48,9 @@ window.addEventListener('DOMContentLoaded', function () {
   var loginView = document.getElementById('login-view');
   var homeView = document.getElementById('home-view');
 
-  firebase.initializeApp(config);
+ 
+
+  firebase.initializeApp(firebaseConfig);
 
   // Functions to be used
   function handleAuthentication() {

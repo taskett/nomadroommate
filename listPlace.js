@@ -6,6 +6,11 @@ window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
     var loginStatus = document.querySelector('.container h4');
+    var btnListNewItems = document.getElementById('roommate');
+    var btnListNewItemsLoggedin = document.getElementById('roommate_loggedin');
+    var loginBtn = document.getElementById('btn-login');
+    var logoutBtn = document.getElementById('btn-logout');
+    var loginStatus = document.querySelector('.container h4');
 
     // Write API
     var form = document.querySelector("#voting-form");
