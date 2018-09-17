@@ -1,6 +1,5 @@
 if (!isAuthenticated()) window.location.href = '/index.html'
 
-
 window.addEventListener('DOMContentLoaded', function () {
     function fetchUserData() {
         return {
@@ -23,7 +22,6 @@ window.addEventListener('DOMContentLoaded', function () {
     var input_start = document.querySelector("#start");
     var input_end = document.querySelector("#end");
     var input_photo = document.querySelector("#photo-link");
-
 
     console.log("Initializing Firebase...");
     var apiKey, BotUserOAuthAccessToken, airtableId;
@@ -50,8 +48,6 @@ window.addEventListener('DOMContentLoaded', function () {
             loginStatusContainer.style.display = 'none';
         }
     }
-
-
 
     function displayButtons() {
         if (isAuthenticated()) {
@@ -86,7 +82,6 @@ window.addEventListener('DOMContentLoaded', function () {
             displayError(true, "Please wait for the database to be connected and try again");
             return
         }
-
 
         if (isAuthenticated()) {
             displayError(false);

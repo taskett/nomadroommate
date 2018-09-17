@@ -41,6 +41,15 @@ body img {
     color: white !important;
 }
 
+#app.listings {
+    padding: 20px;
+}
+
+#app.listings .container {
+    padding: 20px;
+}
+
+
 h1 {
     color: #555;
     text-align: center;

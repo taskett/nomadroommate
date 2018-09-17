@@ -62,21 +62,23 @@
         </div>
     </header>
 
-    <div id="app">
-        <ul>
-            <li v-for="item in items">
-                <h3>{{ item['fields']['Location'] }}</h3>
-                <img :src="item['fields']['PhotoLink']" alt="" v-if="item['fields']['PhotoLink']"
-                    width="150">
-                <p><strong>Price Per Room: </strong>{{ item['fields']['Price'] }}</p>
-                <p><strong>Rooms Available: </strong>{{ item['fields']['Rooms'] }}</p>
-                <p><strong>Travel Dates: </strong>{{ item['fields']['Start'] }} through {{ item['fields']['End'] }}</p>
-                <p><strong>Allowed gender(s): </strong>{{ item['fields']['Genders'] }}</p>
-                <p><strong>Name: </strong>{{ item['fields']['Username'] }}</p>
-                <img class="userpic" :src="item['fields']['Userphoto']" alt="" v-if="item['fields']['Userphoto']""></img>
-                <a :href="item['fields']['SlackMessage']"> Message {{item['fields']['Username']}}</a>
-            </li>
-        </ul>
+    <div id="app" class="listings">
+        <div class="container">
+            <ul>
+                <li v-for="item in items">
+                    <h3 v-if="item['fields']['Location']">{{ item['fields']['Location'] }}</h3>
+                    <img :src="item['fields']['PhotoLink']" alt="" v-if="item['fields']['PhotoLink']"
+                        width="150">
+                    <p v-if="item['fields']['Price']"><strong>Price Per Room: </strong>{{ item['fields']['Price'] }}</p>
+                    <p v-if="item['fields']['Rooms']"><strong>Rooms Available: </strong>{{ item['fields']['Rooms'] }}</p>
+                    <p v-if="item['fields']['Start']"><strong>Travel Dates: </strong>{{ item['fields']['Start'] }} through {{ item['fields']['End'] }}</p>
+                    <p v-if="item['fields']['Genders']"><strong>Allowed gender(s): </strong>{{ item['fields']['Genders'] }}</p>
+                    <p v-if="item['fields']['Username']"><strong>Name: </strong>{{ item['fields']['Username'] }}</p>
+                    <img class="userpic" :src="item['fields']['Userphoto']" alt="" v-if="item['fields']['Userphoto']""> </img>
+                    <a v-if="item['fields']['SlackMessage']" :href="item['fields']['SlackMessage']"> Message {{item['fields']['Username']}}</a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <script type="text/javascript">
