@@ -75,6 +75,8 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   function setSession(authResult) {
+    var tempstring = authResult.idTokenPayload.sub.split("|")
+    var userid = tempstring[1]
     // Set the time that the Access Token will expire at
     var expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime()
@@ -83,7 +85,7 @@ window.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('username', authResult.idTokenPayload.name);
     localStorage.setItem('userpicture', authResult.idTokenPayload.picture);
-    localStorage.setItem('userid', authResult.idTokenPayload);
+    localStorage.setItem('userid', userid);
     localStorage.setItem('expires_at', expiresAt);
   }
 
@@ -161,13 +163,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 
-  axios.post('https://slack.com/api/auth.test', arguments)
-    .then(function (record) {
-      console.log("slack response is: ", record);
-    })
-    .catch(function (error) {
-      console.log("slack ", error);
-    })
+ 
   // axios.post('https://slack.com/api/im.open', arguments)
   //   .then(function (record) {
   //     console.log("response from airtable: ", record);
