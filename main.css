@@ -1,45 +1,54 @@
 body {
     background: url('/img/background.jpg') no-repeat;
-    background-color: white;
+    background-color: #ccc;
     background-size: cover;
     font-family: "Helvetica Neue";
+    margin: 0;
+    width: 100%;
 }
 
 body img {
     max-width: 100%;
 }
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
     body {
-        background: url("/img/background-mobile.jpg")
+        background: url("/img/background.jpg")
     }
+} */
+
+#app {
+    margin-top: 250px;
+}
+#app.welcome {
+    width: 100%;
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#app.welcome .container {
+    padding: 20px;
+}
+
+#app.welcome .button {
+    margin: 0 auto;
+    margin-top: 50px;
+    background-color: #555;
+    color: white !important;
+}
+#app.welcome .button a {
+    color: white !important;
 }
 
 h1 {
     color: #555;
     text-align: center;
 }
-
-@media screen and (max-width: 800px) {
-    h1 {
-        font-size: 1.5em;
-        text-align: left;
-        max-width: 50%;
-        padding-left: 10px;
-    }
-}
-
 p {
     text-align: left;
 }
 
-@media screen and (max-width: 800px) {
-    p {
-        text-align: left;
-        max-width: 50%;
-        padding-left: 10px;
-    }
-}
 
 a {
     color: #555;
@@ -67,16 +76,16 @@ li {
 }
 
 
-.title {
+header {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100px;
+    height: 125px;
     background-color: white;
     width: 100%;
 }
 
-.title p {
+header .title p {
     color: #ccc;
     text-align: center;
 }
@@ -95,25 +104,6 @@ li {
     cursor: pointer;
 }
 
-@media screen and (max-width: 800px) {
-    .button {
-        background-color: white;
-        text-align: center;
-        width: 22%;
-        padding: 15px;
-        margin-right: -30px;
-        margin-left: -30px;
-        color: #333;
-        font-size: 24px;
-        font-weight: 320;
-        letter-spacing: 0.5px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-}
-
-
 .header_button {
     text-align: center;
     width: 60px;
@@ -121,12 +111,15 @@ li {
     padding: 15px;
     font-size: 14px;
     font-weight: 500;
+    margin-top: 21px;
+    margin-right: 10px;
     letter-spacing: 0.5px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    right: 0;
+    top: 0;
 }
-
 
 .btn btn-primary btn-margin {
     text-align: center;
@@ -142,22 +135,15 @@ li {
 }
 
 #btn-home-view {
-    position: relative;
-    float: right;
+    position: absolute;
     background-color: white;
     color: #555;
 }
 
-#btn-login {
-    position: relative;
-    float: right;
-    color: white;
-    background-color: #555;
-}
-
+#btn-login,
 #btn-logout {
-    position: relative;
-    float: right;
+    right: 100px;
+    position: absolute;
     color: white;
     background-color: #555;
 }
@@ -230,6 +216,7 @@ li {
 }
 
 main.container {
+    position: fixed;
     display: block;
     background: red;
     width: 100%;
@@ -239,10 +226,19 @@ main.container {
 }
 main.container h4 {
     width: 100%;
+    padding-top: 20px;
+}
+
+#home-view {
+    height: 100%;
 }
 
 
 
+
+
+
+/* mobile css  */
 @media screen and (max-width: 800px) {
     .airtable-embed {
         width: 95%;
@@ -252,5 +248,60 @@ main.container h4 {
         background: transparent;
         border: 1px solid #ccc;
         border-radius: 6px;
+    }
+
+    .button {
+        background-color: white;
+        text-align: center;
+        width: 22%;
+        padding: 15px;
+        margin-right: -30px;
+        margin-left: -30px;
+        color: #333;
+        font-size: 24px;
+        font-weight: 320;
+        letter-spacing: 0.5px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    .header_button {
+        margin-top: 0;
+    }
+
+    header {
+        height: 140px;
+    }
+
+    header .title {
+        width: 60%;
+        float: left;
+    }
+
+    #btn-home-view,
+    #btn-login,
+    #btn-logout {
+        position: unset;
+        float: unset;
+        margin: 0 auto;
+    }
+
+    #btn-login,
+    #btn-logout {
+        margin-top: 5px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    p {
+        text-align: left;
+        padding-left: 10px;
+    }
+
+    .content {
+        width: 40%;
+        float: right;
     }
 }

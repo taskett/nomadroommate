@@ -1,9 +1,11 @@
 if (!isAuthenticated()) window.location.href = '/index.html'
 
 window.addEventListener('DOMContentLoaded', function () {
+    firebase.database().ref('/slackkey/').once('value').then(function (res) {
+        BotUserOAuthAccessToken = res.node_.value_
+    });
 
     function requestSlackUsers(userid) {
-        console.log("starting tinkering with slack: ");
         var BotUserOAuthAccessToken = "xoxb-391940790484-436111857888-JjgHp2gvcxKFIurey5PaSW8O"
         return axios.post('https://slack.com/api/users.list?token=' + BotUserOAuthAccessToken)
             .then(function (res) {

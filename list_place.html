@@ -29,93 +29,93 @@
   </head>
 
   <body>
-    <div class="title">
-      <h1><a href="/index.html">🏡 Nomad Roommate 🌴</a></h1>
-      <p>split super swanky homes around the world</p>
-    </div>
-
-    <div class="content">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Auth0 - JavaScript</a>
-
-            <div onclick="window.location.href='/index.html'" id="btn-home-view" class="header_button">
-              Home
-            </div>
-
-            <div id="btn-login" class="header_button">
-              Log In
-            </div>
-
-            <div id="btn-logout" class="header_button">
-              Log Out
-            </div>
-
-          </div>
+    <header>
+        <div class="title">
+            <h1><a href="/index.html">🏡 Nomad Roommate 🌴</a></h1>
+            <p>split super swanky homes around the world</p>
         </div>
-      </nav>
+        <div class="content">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <div onclick="window.location.href='index.html'" id="btn-home-view" class="header_button">
+                            Home
+                        </div>
 
+                        <div id="btn-login" class="header_button">
+                            Log In
+                        </div>
 
-      <main class="container">
-        <!-- home view -->
-        <div id="home-view">
-          <h4></h4>
+                        <div id="btn-logout" class="header_button">
+                            Log Out
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+            <main class="container">
+                <!-- home view -->
+                <div id="home-view">
+                    <h4></h4>
+                </div>
+
+            </main>
         </div>
+    </header>
 
-      </main>
+    <div id="app">
 
-    </div>
+      <form action="#0" id="voting-form" class="voting-form">
+        <h1>Submit a Listing</h1>
+        <div>
+          <p>Location</p>
+          <input name="location" placeholder="Bali" required type="text" id="location"> <br>
+          <input name="photo" placeholder="http://imageoftheplace.com/asfkljalksfja.png" required type="text" id="photo-link"> <br>
 
-    <form action="#0" id="voting-form" class="voting-form">
-      <h1>Submit a Listing</h1>
-      <div>
-        <p>Location</p>
-        <input name="location" placeholder="Bali" required type="text" id="location"> <br>
+          <p>Travel Dates</p>
+          <label for="start">Start</label>
+          <input required type="date" id="start" name="start" min="2018-01-01" /> <br>
 
-        <p>Travel Dates</p>
-        <label for="start">Start</label>
-        <input required type="date" id="start" name="start" min="2018-01-01" /> <br>
+          <label for="end">End</label>
+          <input required type="date" id="end" name="end" min="2018-01-01" />
 
-        <label for="end">End</label>
-        <input required type="date" id="end" name="end" min="2018-01-01" />
+          <p>Price per Room</p>
+          <select required name="price" id="price">
+            <option value="" selected disabled style='display:none;'> Select a price </option>
+            <option value="Under $20/night">Under $20/night</option>
+            <option value="$20-$40/night">$20-$40/night</option>
+            <option value="$40-$60/night">$40-$60/night</option>
+            <option value="$40-$60/night">$60-$80/night</option>
+            <option value="$40-$60/night">Over $80/night</option>
+          </select>
 
-        <p>Price per Room</p>
-        <select required name="price" id="price">
-          <option value="" selected disabled style='display:none;'> Select a price </option>
-          <option value="Under $20/night">Under $20/night</option>
-          <option value="$20-$40/night">$20-$40/night</option>
-          <option value="$40-$60/night">$40-$60/night</option>
-          <option value="$40-$60/night">$60-$80/night</option>
-          <option value="$40-$60/night">Over $80/night</option>
-        </select>
+          <p># of Rooms Available</p>
+          <select name="rooms" id="rooms">
+            <option value="" selected disabled style='display:none;'> Select # of rooms </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
 
-        <p># of Rooms Available</p>
-        <select name="rooms" id="rooms">
-          <option value="" selected disabled style='display:none;'> Select # of rooms </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-        </select>
-
-        <p>Gender(s)</p>
-        <select name="gender" id="gender">
-          <option value="" selected disabled style='display:none;'> Select gender(s) </option>
-          <option value="Female Only">Female Only</option>
-          <option value="Male Only">Male Only</option>
-          <option value="Coed">Coed</option>
-        </select>
-        </select>
-      </div>
-      <div>
-        <input type="submit" value="Submit" id="buttonz">
-      </div>
-    </form>
+          <p>Gender(s)</p>
+          <select name="gender" id="gender">
+            <option value="" selected disabled style='display:none;'> Select gender(s) </option>
+            <option value="Female Only">Female Only</option>
+            <option value="Male Only">Male Only</option>
+            <option value="Coed">Coed</option>
+          </select>
+          </select>
+        </div>
+        <div>
+          <input type="submit" value="Submit" id="buttonz">
+        </div>
+      </form>
+    </div>  
   </body>
 
   <script async defer src="https://donthuntme.com/dhm.js"></script>

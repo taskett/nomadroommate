@@ -38,6 +38,7 @@ window.addEventListener('DOMContentLoaded', function () {
   var loginBtn = document.getElementById('btn-login');
   var logoutBtn = document.getElementById('btn-logout');
   var loginStatus = document.querySelector('.container h4');
+  var loginStatusContainer = document.querySelector('.container');
   var loginView = document.getElementById('login-view');
   var homeView = document.getElementById('home-view');
   var btnListNewItems = document.getElementById('roommate');
@@ -58,8 +59,6 @@ window.addEventListener('DOMContentLoaded', function () {
         
         setSession(authResult);
 
-        console.log("authResult: ", authResult.idTokenPayload);
-        
         displayButtons();
         window.location.href = '/welcome.html'
       } 
@@ -88,11 +87,22 @@ window.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('expires_at', expiresAt);
   }
 
+  function displayError (display, message) {
+        console.log(display, message);
+
+    if (display) {
+      loginStatusContainer.style.display = 'block';
+      loginStatus.innerHTML = message; 
+    }
+    else {
+      loginStatusContainer.style.display = 'none';
+    }
+  }
+
   function displayButtons() {
     if (isAuthenticated()) {
       loginBtn.style.display = 'none';
       logoutBtn.style.display = 'inline-block';
-      loginStatus.innerHTML = 'You are logged in!';
 
       if (btnListNewItemsLoggedin && btnListNewItems) {
         btnListNewItemsLoggedin.style.display = 'block';
@@ -102,9 +112,6 @@ window.addEventListener('DOMContentLoaded', function () {
     else {
       loginBtn.style.display = 'inline-block';
       logoutBtn.style.display = 'none';
-      loginStatus.innerHTML =
-        'You are not logged in! Please log in to continue.';
-      
         if (btnListNewItemsLoggedin && btnListNewItems) {
           btnListNewItemsLoggedin.style.display = 'none';
           btnListNewItems.style.display = 'block';
@@ -141,13 +148,13 @@ window.addEventListener('DOMContentLoaded', function () {
     webAuth.authorize();
   });
 
+  displayError(false);
 
-  displayButtons();
 
   // Application starts HERE
   handleAuthentication();
 
   displayButtons();
 
-  console.log("app loaded 35");
+  console.log("app loaded v35");
 });
