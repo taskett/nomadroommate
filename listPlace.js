@@ -22,6 +22,23 @@ window.addEventListener('DOMContentLoaded', function () {
     var input_end = document.querySelector("#end");
     
     console.log("in another js file: ", globalVariable);
+    var userData = null
+    async function fetchGlobalVariable() {
+        var res = null;
+        try {
+            res = await globalVariable.userData;
+        } catch (error) {
+            console.log(error);
+        }
+        return res;
+    }
+
+    while (fetchGlobalVariable == null || userData == null) {
+        userData = fetchGlobalVariable()
+    }
+
+    console.log("userData after async: ", userData);
+    
     
 
     console.log("Initializing Firebase...");
