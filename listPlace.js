@@ -10,9 +10,10 @@ window.addEventListener('DOMContentLoaded', function () {
         var userData = localStorage.getItem('user_data')
         console.log("user",user);
         console.log("userdata",userData);
-        
     }
+
     fetchUserData();
+
     var loginStatus = document.querySelector('.container h4');
     var loginBtn = document.getElementById('btn-login');
     var logoutBtn = document.getElementById('btn-logout');
@@ -53,9 +54,9 @@ window.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         if (!apiKey) {
-            console.log("Please wait for the database to be connected");
+            console.log("Please wait for the database to be connected and try again");
             //TODO: Show message to user? 
-            loginStatus.innerHTML = "Please wait for the database to be connected"
+            loginStatus.innerHTML = "Please wait for the database to be connected and try again"
             return
         }
         

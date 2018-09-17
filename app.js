@@ -33,7 +33,7 @@ function isAuthenticated() {
 
 
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 21");
+  console.log("app loaded 22");
   
   var homeViewBtn = document.getElementById('btn-home-view');
   var loginBtn = document.getElementById('btn-login');
@@ -41,8 +41,9 @@ window.addEventListener('DOMContentLoaded', function () {
   var loginStatus = document.querySelector('.container h4');
   var loginView = document.getElementById('login-view');
   var homeView = document.getElementById('home-view');
+  var btnListNewItems = document.getElementById('roommate');
+  var btnListNewItemsLoggedin = document.getElementById('roommate_loggedin');
 
- 
 
   firebase.initializeApp(firebaseConfig);
 
@@ -88,14 +89,29 @@ window.addEventListener('DOMContentLoaded', function () {
       loginBtn.style.display = 'none';
       logoutBtn.style.display = 'inline-block';
       loginStatus.innerHTML = 'You are logged in!';
+
+      if (btnListNewItemsLoggedin && btnListNewItems) {
+        btnListNewItemsLoggedin.style.display = 'block';
+        btnListNewItems.style.display = 'none';
+      }
     } 
     else {
       loginBtn.style.display = 'inline-block';
       logoutBtn.style.display = 'none';
       loginStatus.innerHTML =
         'You are not logged in! Please log in to continue.';
+      
+        if (btnListNewItemsLoggedin && btnListNewItems) {
+          btnListNewItemsLoggedin.style.display = 'none';
+          btnListNewItems.style.display = 'block';
+      }
     }
   }
+
+  btnListNewItems.addEventListener('click', function (e) {
+    e.preventDefault();
+    webAuth.authorize();
+  });
 
   // init event listeners
   homeViewBtn.addEventListener('click', function () {
