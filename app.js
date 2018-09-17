@@ -149,29 +149,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
   displayButtons();
 
+     
+    
 
-
-  function requestSlackUsers() {
-    console.log("starting tinkering with slakc: ");
-
-    var BotUserOAuthAccessToken = "xoxb-391940790484-436111857888-JjgHp2gvcxKFIurey5PaSW8O"
-
-    var arguments = {
-      token: BotUserOAuthAccessToken,
-    }
-
-
-
-    axios.post('https://slack.com/api/users.list', arguments)
-      .then(function (res) {
-        console.log("response from slack: ", res);
-      })
-      .catch(function (error) {
-        console.log("error from slack: ", error);
-      })
-  }
-  
-  requestSlackUsers();
-
-  console.log("app loaded 29");
+  console.log("app loaded 30");
 });
