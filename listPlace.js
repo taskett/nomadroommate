@@ -94,8 +94,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 if (!res) {
                     console.log("Please signup with slack before listing a new place");
                     //TODO: Show message to user? 
-
-                    displayError(true, "Please signup with slack before listing a new place with real name: " + userData.userid + "  </br> <a href='https://join.slack.com/t/nomadroommate/shared_invite/enQtNDM2MTMyNzkwMjcyLTdjYmU3MmYxOGNlOTVmMDY1ZWVlODkyZDA4MjhiZDZjODcyYzAxZmRiNDkzNTViZGI4YjZmYzllYjA0NTc0OTU'>Click here to join slack</a>");
+                    window.location.href = '/welcome.html'
                     return
                 }
                 //if there is a slack user associated with the auth0 user
