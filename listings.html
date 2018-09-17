@@ -74,9 +74,9 @@
                 <p><strong>Price Per Room: </strong>{{ item['fields']['Price'] }}</p>
                 <p><strong>Rooms Available: </strong>{{ item['fields']['Rooms'] }}</p>
                 <p><strong>Travel Dates: </strong>{{ item['fields']['Start'] }} through {{ item['fields']['End'] }}</p>
-                <p><strong>Gender(s): </strong>{{ item['fields']['Genders'] }}</p>
+                <p><strong>Allowed gender(s): </strong>{{ item['fields']['Genders'] }}</p>
                 <p><strong>Name: </strong>{{ item['fields']['Username'] }}</p>
-                <img :src="item['fields']['Userphoto']"></img>
+                <img class="userpic" :src="item['fields']['Userphoto']" alt="" v-if="item['fields']['Photo']""></img>
             </li>
         </ul>
     </div>

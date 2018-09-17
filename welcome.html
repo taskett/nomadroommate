@@ -1,3 +1,4 @@
+
 <html lang="en">
 
 <head>
@@ -11,6 +12,7 @@
     <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
 
     <script type="text/javascript" src="/app.js"></script>
+    <script type="text/javascript" src="/welcome.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120783224-1"></script>
     <script>
@@ -68,23 +70,17 @@
 
     </div>
 
-    <div id="roommate" class="button">
-        Login to List a place
-    </div>
-    <div style="display: none" onclick="window.location.href='/list_place.html'" id="roommate_loggedin" class="button loggedin">
-        List a Place
-    </div>
-    <div onclick="window.location.href='/listings.html'" id="room" class="button">
-        See Current Listings
-    </div>
+    <h1>Welcome to Nomad Roommate</h1>
+    <h2>Please join our Slack community to be able to reach out to other members </h2>
+    <h2 id="joinSlack"> </h2>
 
     <div class="button">
-        <a href="https://nomadroommate.slack.com/messages/DBJ95E29K/" /> Click me to message this person</a>
+        <a href="https://join.slack.com/t/nomadroommate/shared_invite/enQtNDM2MTMyNzkwMjcyLTdjYmU3MmYxOGNlOTVmMDY1ZWVlODkyZDA4MjhiZDZjODcyYzAxZmRiNDkzNTViZGI4YjZmYzllYjA0NTc0OTU">
+            Click here to join slack
+        </a>
     </div>
-    
 
-    <script async defer src="https://donthuntme.com/dhm.js"></script>
+<script async defer src="https://donthuntme.com/dhm.js"></script>
 
 </body>
-
 </html>

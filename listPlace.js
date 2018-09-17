@@ -12,8 +12,6 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    fetchUserData();
-
     var loginStatus = document.querySelector('.container h4');
     var loginBtn = document.getElementById('btn-login');
     var logoutBtn = document.getElementById('btn-logout');

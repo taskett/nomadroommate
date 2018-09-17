@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function () {
         console.log("authResult: ", authResult.idTokenPayload);
         
         displayButtons();
-        window.location.href = '/list_place.html'
+        // window.location.href = '/welcome.html'
       } 
       else if (err) {
         console.log(err);
@@ -83,6 +83,7 @@ window.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('username', authResult.idTokenPayload.name);
     localStorage.setItem('userpicture', authResult.idTokenPayload.picture);
+    localStorage.setItem('userid', authResult.idTokenPayload);
     localStorage.setItem('expires_at', expiresAt);
   }
 
@@ -146,5 +147,37 @@ window.addEventListener('DOMContentLoaded', function () {
   handleAuthentication();
 
   displayButtons();
+
+
+
+
+  console.log("starting tinkering with slakc: ");
+  
+  var BotUserOAuthAccessToken = "xoxb-391940790484-436111857888-JjgHp2gvcxKFIurey5PaSW8O"
+
+  var arguments = {
+    token: BotUserOAuthAccessToken,
+  }
+
+
+
+  axios.post('https://slack.com/api/auth.test', arguments)
+    .then(function (record) {
+      console.log("slack response is: ", record);
+    })
+    .catch(function (error) {
+      console.log("slack ", error);
+    })
+  // axios.post('https://slack.com/api/im.open', arguments)
+  //   .then(function (record) {
+  //     console.log("response from airtable: ", record);
+  //     alert(record.data.fields.Location + " just added!");
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   })
+
+
+
 
 });
