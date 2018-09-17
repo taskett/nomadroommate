@@ -5,7 +5,7 @@ if (!isAuthenticated()) window.location.href = '/index.html'
 window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
-    console.log(localStorage.getItem('userData'));
+    console.log(JSON.parse(localStorage.getItem('userData')));
     
 
     var loginStatus = document.querySelector('.container h4');
@@ -55,6 +55,8 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         
         if (isAuthenticated()) {
+            console.log(JSON.parse(localStorage.getItem('userData')));
+
             loginStatus.innerHTML = 'You are logged in!';
 
             const app_id = "appo2qL96FI9YS6Tj";
@@ -68,8 +70,8 @@ window.addEventListener('DOMContentLoaded', function () {
                     "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
                     "Start": input_start.value,
                     "End": input_end.value,
-                    "Username": globalVariable.userData.name,
-                    "Userphoto": globalVariable.userData.picture,
+                    // "Username": globalVariable.userData.name,
+                    // "Userphoto": globalVariable.userData.picture,
                 }
             })
             .then(function (record) {

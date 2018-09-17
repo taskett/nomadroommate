@@ -33,7 +33,7 @@ function isAuthenticated() {
 
 
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 18");
+  console.log("app loaded 19");
   
   var homeViewBtn = document.getElementById('btn-home-view');
   var loginBtn = document.getElementById('btn-login');
@@ -128,5 +128,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
   displayButtons();
 
-  console.log("global variable state: ", globalVariable);
 });
