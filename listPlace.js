@@ -6,11 +6,10 @@ window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
     function fetchUserData() {
-        var username2 = localStorage.getItem('username')
-        var userpicture2 = localStorage.getItem('userpicture')
-        console.log("userdata", username2, userpicture2);
-
-        return {username: username2, userpicture: userpicture2}
+        return {
+            name: localStorage.getItem('username'),
+            picture: localStorage.getItem('userpicture')
+        }
     }
 
     fetchUserData();
@@ -62,14 +61,14 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         
         if (isAuthenticated()) {
-            
-            console.log("userdata:", fetchUserData());
-            
-
             loginStatus.innerHTML = 'You are logged in!';
 
             const app_id = "appo2qL96FI9YS6Tj";
             const app_key = apiKey;
+            var userData = fetchUserData();
+
+            console.log("userData", userData);
+            
             
             axios.post('https://api.airtable.com/v0/' + app_id + '/Table?api_key=' + app_key, {
                 fields: {
@@ -79,8 +78,8 @@ window.addEventListener('DOMContentLoaded', function () {
                     "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
                     "Start": input_start.value,
                     "End": input_end.value,
-                    // "Username": globalVariable.userData.name,
-                    // "Userphoto": globalVariable.userData.picture,
+                    "Username": userData.name,
+                    "Userphoto": userData.picture,
                 }
             })
             .then(function (record) {
