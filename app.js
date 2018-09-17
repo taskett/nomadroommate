@@ -9,7 +9,6 @@ var firebaseConfig = {
   messagingSenderId: "311257395463"
 };
 
-
 function isAuthenticated() {
   // Check whether the current time is past the
   // Access Token's expiry time
@@ -88,8 +87,6 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   function displayError (display, message) {
-        console.log(display, message);
-
     if (display) {
       loginStatusContainer.style.display = 'block';
       loginStatus.innerHTML = message; 
@@ -102,7 +99,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function displayButtons() {
     if (isAuthenticated()) {
       loginBtn.style.display = 'none';
-      logoutBtn.style.display = 'inline-block';
+      logoutBtn.style.display = 'block';
 
       if (btnListNewItemsLoggedin && btnListNewItems) {
         btnListNewItemsLoggedin.style.display = 'block';
@@ -110,7 +107,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     } 
     else {
-      loginBtn.style.display = 'inline-block';
+      loginBtn.style.display = 'block';
       logoutBtn.style.display = 'none';
         if (btnListNewItemsLoggedin && btnListNewItems) {
           btnListNewItemsLoggedin.style.display = 'none';
@@ -127,7 +124,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   // init event listeners
   homeViewBtn.addEventListener('click', function () {
-    homeView.style.display = 'inline-block';
+    homeView.style.display = 'block';
     loginView.style.display = 'none';
   });
 

@@ -40,12 +40,11 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     function displayError(display, message) {
-        console.log(display, message);
-        
         if (display) {
             loginStatusContainer.style.display = 'block';
             loginStatus.innerHTML = message;
-        } else {
+        } 
+        else {
             loginStatusContainer.style.display = 'none';
         }
     }
@@ -53,9 +52,9 @@ window.addEventListener('DOMContentLoaded', function () {
     function displayButtons() {
         if (isAuthenticated()) {
             loginBtn.style.display = 'none';
-            logoutBtn.style.display = 'inline-block';
+            logoutBtn.style.display = 'block';
         } else {
-            loginBtn.style.display = 'inline-block';
+            loginBtn.style.display = 'block';
             logoutBtn.style.display = 'none';
         }
     }
@@ -116,7 +115,7 @@ window.addEventListener('DOMContentLoaded', function () {
                             }
                         })
                         .then(function (record) {
-                            console.log("response from airtable: ", record);
+                            // console.log("response from airtable: ", record);
 
                             var messageToShow = record.data.fields.Location + " just added!"
                             displayError(true, messageToShow);
@@ -133,7 +132,9 @@ window.addEventListener('DOMContentLoaded', function () {
         } 
         //if not authenticated
         else {
+            window.location.href = '/index.html'
             console.log("You must be logged in to submit a listing!");
+            return
         }
     });
     displayButtons()
