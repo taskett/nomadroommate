@@ -5,7 +5,7 @@ if (!isAuthenticated()) window.location.href = '/index.html'
 window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
-    console.log(JSON.parse(localStorage.getItem('user_data')));
+    console.log(localStorage.getItem('user_data'));
     
 
     var loginStatus = document.querySelector('.container h4');
