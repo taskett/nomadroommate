@@ -33,7 +33,7 @@ function isAuthenticated() {
 
 
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 27");
+  console.log("app loaded 28");
   
   var homeViewBtn = document.getElementById('btn-home-view');
   var loginBtn = document.getElementById('btn-login');
