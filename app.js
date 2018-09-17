@@ -152,5 +152,5 @@ window.addEventListener('DOMContentLoaded', function () {
      
     
 
-  console.log("app loaded 30");
+  console.log("app loaded 31");
 });

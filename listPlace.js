@@ -52,9 +52,15 @@ window.addEventListener('DOMContentLoaded', function () {
         var BotUserOAuthAccessToken = "xoxb-391940790484-436111857888-JjgHp2gvcxKFIurey5PaSW8O"
         var member = axios.post('https://slack.com/api/users.list?token=' + BotUserOAuthAccessToken)
             .then(function (res) {
-                return res.data.members.filter(function (a) {
+                var mem = res.data.members.filter(function (a) {
                     return a.name == userid;
                 })
+                if (mem) {
+                    return mem;
+                }
+                else {
+                    return null;
+                }
             })
             .catch(function (error) {
                 console.log("error from slack: ", error);
