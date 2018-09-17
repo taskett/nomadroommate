@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', function () {
         console.log("authResult: ", authResult.idTokenPayload);
         
         displayButtons();
-        // window.location.href = '/welcome.html'
+        window.location.href = '/welcome.html'
       } 
       else if (err) {
         console.log(err);
@@ -149,5 +149,5 @@ window.addEventListener('DOMContentLoaded', function () {
 
   displayButtons();
 
-  console.log("app loaded 33");
+  console.log("app loaded 34");
 });
