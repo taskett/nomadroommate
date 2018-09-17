@@ -8,7 +8,10 @@ window.addEventListener('DOMContentLoaded', function () {
     function fetchUserData() {
         var username = JSON.parse(localStorage.getItem('username'))
         var userpicture = JSON.parse(localStorage.getItem('userpicture'))
-        console.log("userdata", username, userpicture);
+        var username2 = localStorage.getItem('username')
+        var userpicture2 = localStorage.getItem('userpicture')
+        console.log("userdata", username, userpicture, username2, userpicture2);
+
         return {username: username, userpicture: userpicture}
     }
 
@@ -62,7 +65,7 @@ window.addEventListener('DOMContentLoaded', function () {
         
         if (isAuthenticated()) {
             
-            console.log("userdata:", fetchUserData(););
+            console.log("userdata:", fetchUserData());
             
 
             loginStatus.innerHTML = 'You are logged in!';
