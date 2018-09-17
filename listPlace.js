@@ -5,9 +5,10 @@ if (!isAuthenticated()) window.location.href = '/index.html'
 window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
+    console.log(localStorage.getItem('userData'));
+    
+
     var loginStatus = document.querySelector('.container h4');
-    var btnListNewItems = document.getElementById('roommate');
-    var btnListNewItemsLoggedin = document.getElementById('roommate_loggedin');
     var loginBtn = document.getElementById('btn-login');
     var logoutBtn = document.getElementById('btn-logout');
     var loginStatus = document.querySelector('.container h4');
@@ -20,25 +21,6 @@ window.addEventListener('DOMContentLoaded', function () {
     var select_rooms = document.querySelector("#rooms");
     var input_start = document.querySelector("#start");
     var input_end = document.querySelector("#end");
-    
-    console.log("in another js file: ", globalVariable);
-    var userData = null
-    async function fetchGlobalVariable() {
-        var res = null;
-        try {
-            res = await globalVariable.userData;
-        } catch (error) {
-            console.log(error);
-        }
-        return res;
-    }
-
-    while (fetchGlobalVariable == null || userData == null) {
-        userData = fetchGlobalVariable()
-    }
-
-    console.log("userData after async: ", userData);
-    
     
 
     console.log("Initializing Firebase...");

@@ -17,6 +17,13 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function isAuthenticated() {
+        // Check whether the current time is past the
+        // Access Token's expiry time
+        var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+        return new Date().getTime() < expiresAt;
+    }
+
     btnListNewItems.addEventListener('click', function (e) {
         e.preventDefault();
         webAuth.authorize();

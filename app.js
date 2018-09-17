@@ -1,7 +1,3 @@
- var globalVariable = {
-   userData: null,
- };
-
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -37,10 +33,8 @@ function isAuthenticated() {
 
 
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 17");
+  console.log("app loaded 18");
   
-  var btnListNewItems = document.getElementById('roommate');
-  var btnListNewItemsLoggedin = document.getElementById('roommate_loggedin');
   var homeViewBtn = document.getElementById('btn-home-view');
   var loginBtn = document.getElementById('btn-login');
   var logoutBtn = document.getElementById('btn-logout');
@@ -66,9 +60,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
         console.log("authResult: ", authResult.idTokenPayload);
         
-
-        globalVariable.userData = authResult.idTokenPayload
-
         displayButtons();
       } 
       else if (err) {
@@ -89,6 +80,7 @@ window.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('userData', authResult.idTokenPayload);
   }
 
   function displayButtons() {
