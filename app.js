@@ -33,7 +33,7 @@ function isAuthenticated() {
 
 
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 19");
+  console.log("app loaded 20");
   
   var homeViewBtn = document.getElementById('btn-home-view');
   var loginBtn = document.getElementById('btn-login');
@@ -80,7 +80,7 @@ window.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    localStorage.setItem('userData', authResult.idTokenPayload);
+    localStorage.setItem('user_data', authResult.idTokenPayload);
   }
 
   function displayButtons() {
@@ -112,6 +112,7 @@ window.addEventListener('DOMContentLoaded', function () {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('user_data');
     displayButtons();
   });
 

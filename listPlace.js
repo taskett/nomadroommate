@@ -5,7 +5,7 @@ if (!isAuthenticated()) window.location.href = '/index.html'
 window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
-    console.log(JSON.parse(localStorage.getItem('userData')));
+    console.log(JSON.parse(localStorage.getItem('user_data')));
     
 
     var loginStatus = document.querySelector('.container h4');
@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         
         if (isAuthenticated()) {
-            console.log(JSON.parse(localStorage.getItem('userData')));
+            console.log(JSON.parse(localStorage.getItem('user_data')));
 
             loginStatus.innerHTML = 'You are logged in!';
 
