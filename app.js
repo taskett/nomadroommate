@@ -80,7 +80,8 @@ window.addEventListener('DOMContentLoaded', function () {
     );
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('user_data', authResult.idTokenPayload);
+    localStorage.setItem('username', authResult.idTokenPayload.name);
+    localStorage.setItem('userpicture', authResult.idTokenPayload.picture);
     localStorage.setItem('expires_at', expiresAt);
   }
 
@@ -108,11 +109,12 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  btnListNewItems.addEventListener('click', function (e) {
-    e.preventDefault();
-    webAuth.authorize();
-  });
-
+  if (btnListNewItemsLoggedin && btnListNewItems) {
+    btnListNewItems.addEventListener('click', function (e) {
+      e.preventDefault();
+      webAuth.authorize();
+    });
+  }
   // init event listeners
   homeViewBtn.addEventListener('click', function () {
     homeView.style.display = 'inline-block';

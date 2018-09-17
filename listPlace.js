@@ -6,10 +6,10 @@ window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
     function fetchUserData() {
-        var user = JSON.parse(localStorage.getItem('user_data'))
-        var userData = localStorage.getItem('user_data')
-        console.log("user",user);
-        console.log("userdata",userData);
+        var username = JSON.parse(localStorage.getItem('username'))
+        var userpicture = JSON.parse(localStorage.getItem('userpicture'))
+        console.log("userdata", username, userpicture);
+        return {username: username, userpicture: userpicture}
     }
 
     fetchUserData();
@@ -61,7 +61,9 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         
         if (isAuthenticated()) {
-            fetchUserData();
+            
+            console.log("userdata:", fetchUserData(););
+            
 
             loginStatus.innerHTML = 'You are logged in!';
 
