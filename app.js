@@ -33,7 +33,6 @@ function isAuthenticated() {
 
 
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("app loaded 28");
   
   var homeViewBtn = document.getElementById('btn-home-view');
   var loginBtn = document.getElementById('btn-login');
@@ -152,28 +151,27 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 
+  function requestSlackUsers() {
+    console.log("starting tinkering with slakc: ");
 
-  console.log("starting tinkering with slakc: ");
-  
-  var BotUserOAuthAccessToken = "xoxb-391940790484-436111857888-JjgHp2gvcxKFIurey5PaSW8O"
+    var BotUserOAuthAccessToken = "xoxb-391940790484-436111857888-JjgHp2gvcxKFIurey5PaSW8O"
 
-  var arguments = {
-    token: BotUserOAuthAccessToken,
+    var arguments = {
+      token: BotUserOAuthAccessToken,
+    }
+
+
+
+    axios.post('https://slack.com/api/users.list', arguments)
+      .then(function (res) {
+        console.log("response from slack: ", res);
+      })
+      .catch(function (error) {
+        console.log("error from slack: ", error);
+      })
   }
+  
+  requestSlackUsers();
 
-
-
- 
-  // axios.post('https://slack.com/api/im.open', arguments)
-  //   .then(function (record) {
-  //     console.log("response from airtable: ", record);
-  //     alert(record.data.fields.Location + " just added!");
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   })
-
-
-
-
+  console.log("app loaded 29");
 });
