@@ -62,6 +62,7 @@ window.addEventListener('DOMContentLoaded', function () {
         console.log("authResult: ", authResult.idTokenPayload);
         
         displayButtons();
+        window.location.href = '/list_place.html'
       } 
       else if (err) {
         console.log(err);
@@ -130,7 +131,6 @@ window.addEventListener('DOMContentLoaded', function () {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    localStorage.removeItem('user_data');
     displayButtons();
   });
 

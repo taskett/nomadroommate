@@ -6,13 +6,11 @@ window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
     function fetchUserData() {
-        var username = JSON.parse(localStorage.getItem('username'))
-        var userpicture = JSON.parse(localStorage.getItem('userpicture'))
         var username2 = localStorage.getItem('username')
         var userpicture2 = localStorage.getItem('userpicture')
-        console.log("userdata", username, userpicture, username2, userpicture2);
+        console.log("userdata", username2, userpicture2);
 
-        return {username: username, userpicture: userpicture}
+        return {username: username2, userpicture: userpicture2}
     }
 
     fetchUserData();
