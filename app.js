@@ -149,8 +149,5 @@ window.addEventListener('DOMContentLoaded', function () {
 
   displayButtons();
 
-     
-    
-
   console.log("app loaded 31");
 });

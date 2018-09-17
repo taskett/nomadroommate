@@ -50,22 +50,16 @@ window.addEventListener('DOMContentLoaded', function () {
     function requestSlackUsers(userid) {
         console.log("starting tinkering with slakc: ");
         var BotUserOAuthAccessToken = "xoxb-391940790484-436111857888-JjgHp2gvcxKFIurey5PaSW8O"
-        var member = axios.post('https://slack.com/api/users.list?token=' + BotUserOAuthAccessToken)
+        return axios.post('https://slack.com/api/users.list?token=' + BotUserOAuthAccessToken)
             .then(function (res) {
                 var mem = res.data.members.filter(function (a) {
                     return a.name == userid;
                 })
-                if (mem) {
-                    return mem;
-                }
-                else {
-                    return null;
-                }
+                return mem[0];
             })
             .catch(function (error) {
                 console.log("error from slack: ", error);
             })
-        return member[0];
     }
 
     // on form submit
