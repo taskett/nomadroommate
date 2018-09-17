@@ -5,9 +5,14 @@ if (!isAuthenticated()) window.location.href = '/index.html'
 window.addEventListener('DOMContentLoaded', function () {
     console.log("listPlace loaded");
 
-    console.log(localStorage.getItem('user_data'));
-    
-
+    function fetchUserData() {
+        var user = JSON.parse(localStorage.getItem('user_data'))
+        var userData = localStorage.getItem('user_data')
+        console.log("user",user);
+        console.log("userdata",userData);
+        
+    }
+    fetchUserData();
     var loginStatus = document.querySelector('.container h4');
     var loginBtn = document.getElementById('btn-login');
     var logoutBtn = document.getElementById('btn-logout');
@@ -55,7 +60,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         
         if (isAuthenticated()) {
-            console.log(JSON.parse(localStorage.getItem('user_data')));
+            fetchUserData();
 
             loginStatus.innerHTML = 'You are logged in!';
 
