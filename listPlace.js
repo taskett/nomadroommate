@@ -52,6 +52,8 @@ window.addEventListener('DOMContentLoaded', function () {
         var BotUserOAuthAccessToken = "xoxb-391940790484-436111857888-JjgHp2gvcxKFIurey5PaSW8O"
         return axios.post('https://slack.com/api/users.list?token=' + BotUserOAuthAccessToken)
             .then(function (res) {
+                console.log("starting tinkering with slakc: ", res.data.members);
+                
                 var mem = res.data.members.filter(function (a) {
                     return a.name == userid;
                 })
@@ -87,7 +89,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 if (!res) {
                     console.log("Please signup with slack before listing a new place");
                     //TODO: Show message to user? 
-                    loginStatus.innerHTML = "Please signup with slack before listing a new place with username: " + userData.userid + " <a href='https://join.slack.com/t/nomadroommate/shared_invite/enQtNDM2MTMyNzkwMjcyLTdjYmU3MmYxOGNlOTVmMDY1ZWVlODkyZDA4MjhiZDZjODcyYzAxZmRiNDkzNTViZGI4YjZmYzllYjA0NTc0OTU'>Click here to join slack</a>"
+                    loginStatus.innerHTML = "Please signup with slack before listing a new place with username: " + userData.userid + "  </br> <a href='https://join.slack.com/t/nomadroommate/shared_invite/enQtNDM2MTMyNzkwMjcyLTdjYmU3MmYxOGNlOTVmMDY1ZWVlODkyZDA4MjhiZDZjODcyYzAxZmRiNDkzNTViZGI4YjZmYzllYjA0NTc0OTU'>Click here to join slack</a>"
                     return
                 }
 

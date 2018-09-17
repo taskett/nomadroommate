@@ -1,6 +1,6 @@
 body {
     background: url('/img/background.jpg') no-repeat;
-    background-color: #ccc;
+    background-color: white;
     background-size: cover;
     font-family: "Helvetica Neue";
 }
@@ -71,6 +71,7 @@ li {
     position: fixed;
     top: 0;
     left: 0;
+    height: 100px;
     background-color: white;
     width: 100%;
 }
@@ -227,6 +228,20 @@ li {
     color: aqua;
     font-size: 48px;
 }
+
+main.container {
+    display: block;
+    background: red;
+    width: 100%;
+    margin-top: 100px;
+    height: 100px;
+    text-align: center;
+}
+main.container h4 {
+    width: 100%;
+}
+
+
 
 @media screen and (max-width: 800px) {
     .airtable-embed {
