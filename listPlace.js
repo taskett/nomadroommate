@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', function () {
     var loginBtn = document.getElementById('btn-login');
     var logoutBtn = document.getElementById('btn-logout');
     var loginStatus = document.querySelector('.container h4');
+    var loginStatusContainer = document.querySelector('.container');
 
     // Write API
     var form = document.querySelector("#voting-form");
