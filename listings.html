@@ -77,7 +77,7 @@
                 <p><strong>Allowed gender(s): </strong>{{ item['fields']['Genders'] }}</p>
                 <p><strong>Name: </strong>{{ item['fields']['Username'] }}</p>
                 <img class="userpic" :src="item['fields']['Userphoto']" alt="" v-if="item['fields']['Photo']""></img>
-                <a href="item['fields']['SlackMessage']"> Message {{item['fields']['Username']}}</a>
+                <a :href="item['fields']['SlackMessage']"> Message {{item['fields']['Username']}}</a>
             </li>
         </ul>
     </div>

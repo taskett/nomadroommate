@@ -48,7 +48,6 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     function requestSlackUsers(userid) {
-        console.log("starting tinkering with slakc: ");
         var BotUserOAuthAccessToken = "xoxb-391940790484-436111857888-JjgHp2gvcxKFIurey5PaSW8O"
         return axios.post('https://slack.com/api/users.list?token=' + BotUserOAuthAccessToken)
             .then(function (res) {
@@ -75,13 +74,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
         if (isAuthenticated()) {
-            loginStatus.innerHTML = 'You are logged in!';
+            loginStatus.innerHTML = '';
 
             const app_id = "appo2qL96FI9YS6Tj";
             const app_key = apiKey;
             var userData = fetchUserData();
-
-            console.log("userData", userData);
 
             requestSlackUsers(userData.userid).then(function (res) {
                 console.log("req slack: ", res);
@@ -92,31 +89,35 @@ window.addEventListener('DOMContentLoaded', function () {
                     loginStatus.innerHTML = "Please signup with slack before listing a new place with real name: " + userData.userid + "  </br> <a href='https://join.slack.com/t/nomadroommate/shared_invite/enQtNDM2MTMyNzkwMjcyLTdjYmU3MmYxOGNlOTVmMDY1ZWVlODkyZDA4MjhiZDZjODcyYzAxZmRiNDkzNTViZGI4YjZmYzllYjA0NTc0OTU'>Click here to join slack</a>"
                     return
                 }
-
-                axios.post('https://api.airtable.com/v0/' + app_id + '/Table?api_key=' + app_key, {
-                        fields: {
-                            "Genders": select_gender.options[select_gender.selectedIndex].value,
-                            "Location": input_location.value,
-                            "Price": select_price.options[select_price.selectedIndex].value,
-                            "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
-                            "Start": input_start.value,
-                            "End": input_end.value,
-                            "Username": userData.name,
-                            "Userphoto": userData.picture,
-                            "SlackMessage": "https://nomadroommate.slack.com/messages/" + userData.userid,
-                        }
-                    })
-                    .then(function (record) {
-                        console.log("response from airtable: ", record);
-                        alert(record.data.fields.Location + " just added!");
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
+                //if there is a slack user associated with the auth0 user
+                else {
+                    axios.post('https://api.airtable.com/v0/' + app_id + '/Table?api_key=' + app_key, {
+                            fields: {
+                                "Genders": select_gender.options[select_gender.selectedIndex].value,
+                                "Location": input_location.value,
+                                "Price": select_price.options[select_price.selectedIndex].value,
+                                "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
+                                "Start": input_start.value,
+                                "End": input_end.value,
+                                "Username": userData.name,
+                                "Userphoto": userData.picture,
+                                "SlackMessage": "https://nomadroommate.slack.com/messages/" + userData.userid,
+                            }
+                        })
+                        .then(function (record) {
+                            console.log("response from airtable: ", record);
+                            alert(record.data.fields.Location + " just added!");
+                            return
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                }
             });
 
-
-        } else {
+        } 
+        //if not authenticated
+        else {
             console.log("You must be logged in to submit a listing!");
         }
     });
