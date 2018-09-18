@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', function () {
         requestSlackUsers(localStorage.getItem('userid')).then(function (res) {
             if (!res) {
                 document.getElementById("joinSlack").innerHTML = "with these numbers in the field 'full name': " + localStorage.getItem('userid');
+                loadingGif.style.display = 'none';
             } else {
                 window.location.href = '/list_place.html'
             }
