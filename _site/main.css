@@ -1,0 +1,372 @@
+body {
+    background: url('/img/background.jpg') no-repeat;
+    background-color: #ccc;
+    background-size: cover;
+    font-family: "Helvetica Neue";
+    margin: 0;
+    width: 100%;
+}
+
+body img {
+    max-width: 100%;
+}
+
+/* @media screen and (max-width: 800px) {
+    body {
+        background: url("/img/background.jpg")
+    }
+} */
+
+#app {
+    margin-top: 250px;
+    height: calc(100vh - 130px);
+}
+#app.welcome {
+    width: 100%;
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#app.welcome .container {
+    padding: 20px;
+}
+
+#app.welcome .button {
+    margin: 0 auto;
+    margin-top: 50px;
+    background-color: #555;
+    color: white !important;
+}
+#app.welcome .button a {
+    color: white !important;
+}
+
+#app.listings {
+    padding: 20px;
+}
+
+#app.listings .container {
+    padding: 20px;
+}
+
+h1 {
+    color: #555;
+    text-align: center;
+}
+p {
+    text-align: left;
+}
+
+
+a {
+    color: #555;
+    text-decoration: none;
+}
+
+
+ul {
+    list-style-type: none;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+li {
+    width: 300px;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    margin: 50px;
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 125px;
+    background-color: white;
+    width: 100%;
+}
+
+header .title p {
+    color: #ccc;
+    text-align: center;
+}
+
+.button {
+    background-color: white;
+    text-align: center;
+    width: 20%;
+    padding: 15px;
+    color: #333;
+    font-size: 24px;
+    font-weight: 320;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.header_button {
+    text-align: center;
+    width: 60px;
+    height: 15px;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 21px;
+    margin-right: 10px;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+}
+
+.btn btn-primary btn-margin {
+    text-align: center;
+    width: 55px;
+    height: 15px;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#btn-home-view {
+    position: absolute;
+    background-color: white;
+    color: #555;
+}
+
+#btn-login,
+#btn-logout {
+    right: 100px;
+    position: absolute;
+    color: white;
+    background-color: #555;
+}
+
+#roommate {
+    position: fixed;
+    float: left;
+    top: 50%;
+    left: 25%;
+}
+
+#roommate_loggedin {
+    display: block;
+    position: fixed;
+    float: left;
+    top: 50%;
+    left: 25%;
+}
+
+#room {
+    position: fixed;
+    float: right;
+    top: 50%;
+    right: 25%;
+}
+
+#filter {
+    position: absolute;
+    top: 20px;
+    float: right;
+    left: 5%;
+    background: #eee;
+}
+
+#search {
+    position: relative;
+    top: 15px;
+    right: 5%;
+    float: right;
+    background: #eee;
+}
+
+.airtable-embed {
+    width: 60%;
+    height: 80%;
+    margin-top: 115px;
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.userpic {
+    display: block;
+    max-width: 50px;
+    max-height: 70px;
+}
+
+
+#listings {
+    -webkit-box-flex: 0;
+    width: 95%;
+    height: 100%;
+    border: 1px solid #ccc;
+}
+
+
+.formValidationMessage {
+    color: aqua;
+    font-size: 48px;
+}
+
+main.container {
+    position: fixed;
+    display: block;
+    background: red;
+    width: 100%;
+    margin-top: 130px;
+    height: 120px;
+    text-align: center;
+}
+main.container h4 {
+    width: 100%;
+    padding-top: 20px;
+}
+
+#home-view {
+    height: 100%;
+}
+
+
+
+
+
+
+/* mobile css  */
+@media screen and (max-width: 800px) {
+    .airtable-embed {
+        width: 95%;
+        height: 80%;
+        margin-top: 100px;
+        margin-bottom: 20px;
+        background: transparent;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    #app .button {
+        width: 85%;
+        margin: 0 auto;
+        float: unset;
+        margin-top: 50px;
+        position: unset;
+    }
+
+    .button {
+        background-color: white;
+        text-align: center;
+        width: 80%;
+        padding: 15px;
+        margin-right: -30px;
+        margin-left: -30px;
+        color: #333;
+        font-size: 24px;
+        font-weight: 320;
+        letter-spacing: 0.5px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .header_button {
+        margin-top: 0;
+    }
+
+    header {
+        height: 130px;
+    }
+
+    header .title {
+        margin-top: 10px;
+        width: 70%;
+        float: left;
+    }
+    header .content {
+        margin-top: 10px;
+        width: 30%;
+        float: right;
+    }
+    header h1 {
+        font-size: 1.3em;
+    }
+
+    header p {
+        text-align: left;
+        padding-left: 10px;
+    }
+
+    #btn-home-view,
+    #btn-login,
+    #btn-logout {
+        position: unset;
+        float: unset;
+        margin: 0 auto;
+    }
+
+    #btn-login,
+    #btn-logout {
+        margin-top: 5px;
+    }
+
+    
+
+    #app.listings {
+        padding: 0;
+    }
+
+    #app.listings .container {
+        padding: 0;
+    }
+
+    #app.listings .container li {
+        width: 85%;
+        margin: 0;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    #app.listings .container li .container {
+       padding: 20px;
+    }
+   
+    #app.listings .container li .slackMessage {
+       text-align: center;
+       width: 90%;
+       height: 50px;
+       margin-top:20px;
+       padding: 15px;
+       line-height: 25px;
+       border: none;
+       border-radius: 6px;
+       cursor: pointer;
+       background-color: #ccc;
+    }
+    #app.listings .container li .slackMessage .userpic {
+       max-width: 30%;
+       float: left;
+       border-radius: 50px;
+
+    }
+    #app.listings .container li .slackMessage a {
+       max-width: 70%;
+       float: right;
+       text-align: left;
+       display: block;
+    }
+   
+}

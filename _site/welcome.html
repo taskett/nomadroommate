@@ -1,0 +1,84 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+
+    <script type="text/javascript" src="/app.js"></script>
+    <script type="text/javascript" src="/welcome.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120783224-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-120783224-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <link rel="icon" href="/img/houseicon.png">
+    <title>Nomad Roommate Finder</title>
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            <h1><a href="/index.html">🏡 Nomad Roommate 🌴</a></h1>
+            <p>split super swanky homes around the world</p>
+        </div>
+        <div class="content">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <div onclick="window.location.href='index.html'" id="btn-home-view" class="header_button">
+                            Home
+                        </div>
+
+                        <div id="btn-login" class="header_button">
+                            Log In
+                        </div>
+
+                        <div id="btn-logout" class="header_button">
+                            Log Out
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <main class="container">
+            <!-- home view -->
+            <div id="home-view">
+                <h4></h4>
+            </div>
+        </main>
+    </header>
+
+    <div id="app" class="welcome">
+        <div class="container">
+            <h1>Welcome to Nomad Roommate</h1>
+            <h2>Please join our Slack community to be able to reach out to other members </h2>
+            <h2 id="joinSlack"> </h2>
+
+            <div class="button">
+                <a target="_blank" href="https://join.slack.com/t/nomadroommate/shared_invite/enQtNDM2MTMyNzkwMjcyLTdjYmU3MmYxOGNlOTVmMDY1ZWVlODkyZDA4MjhiZDZjODcyYzAxZmRiNDkzNTViZGI4YjZmYzllYjA0NTc0OTU">
+                    Click here to join slack
+                </a>
+            </div>
+        </div>
+    </div>
+
+<script async defer src="https://donthuntme.com/dhm.js"></script>
+
+</body>
+</html>

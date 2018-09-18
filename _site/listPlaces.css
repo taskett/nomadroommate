@@ -1,0 +1,45 @@
+body {
+    font-family: Sans-Serif;
+    margin: 0;
+}
+
+p {
+    padding-left: 0;
+}
+
+h1,
+h2 {
+    font-size: 20px;
+}
+
+.voting-form {
+    background: #eee;
+    padding: 20px;
+    margin: 0 0 20px 0;
+}
+
+select {
+    width: 200px;
+    text-align: center;
+    background: white;
+    border: 5px solid white;
+}
+
+input {
+    background: white;
+    border: 2px solid white;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+input#buttonz {
+    width: 100px;
+    border: 2px solid white;
+    padding: 10px;
+    margin: 10px 0 10px;
+}
+
+
+@media screen and (max-width: 800px) {
+
+}
