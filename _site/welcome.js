@@ -1,3 +1,5 @@
+if (!isAuthenticated()) window.location.href = '/index.html'
+
 window.addEventListener('DOMContentLoaded', function () {
     var BotUserOAuthAccessToken = null;
 
@@ -13,31 +15,16 @@ window.addEventListener('DOMContentLoaded', function () {
         })
     });
 
-    document.onreadystatechange = function(e)
-    {
-        if (document.readyState === 'complete')
-        {
-            //dom is ready, window.onload fires later
-        }
-    };
-    window.onload = function(e)
-    {
-        if (!isAuthenticated()) window.location.href = '/index.html'
-
-
-
-        function requestSlackUsers(userid) {
-            return axios.post('https://slack.com/api/users.list?token=' + BotUserOAuthAccessToken)
-                .then(function (res) {
-                    var mem = res.data.members.filter(function (a) {
-                        return a.profile.real_name == userid;
-                    })
-                    return mem[0];
+    function requestSlackUsers(userid) {
+        return axios.post('https://slack.com/api/users.list?token=' + BotUserOAuthAccessToken)
+            .then(function (res) {
+                var mem = res.data.members.filter(function (a) {
+                    return a.profile.real_name == userid;
                 })
-                .catch(function (error) {
-                    console.log("error from slack: ", error);
-                })
-        }
-    });
-
-};
+                return mem[0];
+            })
+            .catch(function (error) {
+                console.log("error from slack: ", error);
+            })
+    }
+});
