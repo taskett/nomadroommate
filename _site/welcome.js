@@ -1,4 +1,4 @@
-if (!isAuthenticated()) window.location.href = '/index.html'
+ (!isAuthenticated()) window.location.href = '/index.html' 
 
 window.addEventListener('DOMContentLoaded', function () {
     var BotUserOAuthAccessToken = null;
@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 document.getElementById("joinSlack").innerHTML = "with these numbers in the field 'full name': " + localStorage.getItem('userid');
                 loadingGif.style.display = 'none';
             } else {
-                window.location.href = '/list_place.html'
+                window.location.href = '/list_place.html' 
             }
         })
     });
