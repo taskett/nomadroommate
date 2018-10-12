@@ -1,7 +1,9 @@
- (!isAuthenticated()) window.location.href = '/index.html' 
+ (!isAuthenticated()) window.location.href = '/index.html';
 
 window.addEventListener('DOMContentLoaded', function () {
     var BotUserOAuthAccessToken = null;
+
+    console.log("page loaded v1");
 
     firebase.database().ref('/slackkey/').once('value').then(function (res) {
         BotUserOAuthAccessToken = res.node_.value_;
