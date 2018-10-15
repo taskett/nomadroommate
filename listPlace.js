@@ -103,6 +103,7 @@ window.addEventListener('DOMContentLoaded', function () {
                             fields: {
                                 "Genders": select_gender.options[select_gender.selectedIndex].value,
                                 "Location": input_location.value,
+                                "userid": userData.userid,
                                 "Price": select_price.options[select_price.selectedIndex].value,
                                 "Rooms": select_rooms.options[select_rooms.selectedIndex].value,
                                 "Start": input_start.value,

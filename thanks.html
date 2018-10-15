@@ -1,0 +1,174 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+
+    <script type="text/javascript" src="/app.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120783224-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-120783224-1');
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <link rel="icon" href="/img/houseicon.png">
+
+    <!-- Start of Async Drift Code -->
+    <script>
+        "use strict";
+
+        !function () {
+            var t = window.driftt = window.drift = window.driftt || [];
+            if (!t.init) {
+                if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+                t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+                    t.factory = function (e) {
+                        return function () {
+                            var n = Array.prototype.slice.call(arguments);
+                            return n.unshift(e), t.push(n), t;
+                        };
+                    }, 
+                    t.methods.forEach(function (e) {
+                        t[e] = t.factory(e);
+                    }), 
+                    t.load = function (t) {
+                        var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                        var i = document.getElementsByTagName("script")[0];
+                        i.parentNode.insertBefore(o, i);
+                    };
+            }
+        }();
+        drift.SNIPPET_VERSION = '0.3.1';
+        drift.load('4634gtn6hrst');
+    </script>
+    <!-- End of Async Drift Code -->
+
+    <title>Nomad Roommate Finder</title>
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            <h1><a href="/index.html">🏡 Nomad Roommate 🌴</a></h1>
+            <p>split super swanky homes around the world</p>
+        </div>
+        <div class="content">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <div onclick="window.location.href='index.html'" id="btn-home-view" class="header_button">
+                            Home
+                        </div>
+
+                        <div id="btn-login" class="header_button">
+                            Log In
+                        </div>
+
+                        <div id="btn-logout" class="header_button">
+                            Log Out
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <main class="container">
+            <!-- home view -->
+            <div id="home-view">
+                <h4></h4>
+            </div>
+        </main>
+    </header>
+
+    <div id="app" class="welcome">
+        <div class="container">
+            <p>Your Submission is live! Here's what it looks like: </p>
+            <div id="app" class="listings">
+                <div class="container">
+                    <ul>
+                        <li v-for="item in items">
+                            <div class="container">
+                                <h3 v-if="item['fields']['Location']">{{ item['fields']['Location'] }}</h3>
+                                <img :src="item['fields']['PhotoLink']" alt="" v-if="item['fields']['PhotoLink']" width="150">
+                                <p v-if="item['fields']['Price']"><strong>Price Per Room: </strong>{{
+                                    item['fields']['Price'] }}</p>
+                                <p v-if="item['fields']['Rooms']"><strong>Rooms Available: </strong>{{
+                                    item['fields']['Rooms'] }}</p>
+                                <p v-if="item['fields']['Start']"><strong>Travel Dates: </strong>{{
+                                    item['fields']['Start'] }} through {{ item['fields']['End'] }}</p>
+                                <p v-if="item['fields']['Genders']"><strong>Allowed gender(s): </strong>{{
+                                    item['fields']['Genders'] }}</p>
+                                <a target="_blank" v-if="item['fields']['SlackMessage']" :href="item['fields']['SlackMessage']">
+                                    <div v-if="item['fields']['SlackMessage']" class="slackMessage button" :href="item['fields']['SlackMessage']">
+                                        <img class="userpic" :src="item['fields']['Userphoto']" alt="" v-if="item['fields']['Userphoto']">
+                                        Message {{item['fields']['Username']}}
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                items: []
+            },
+            mounted: function () {
+                this.loadItems();
+            },
+            methods: {
+                loadItems: function () {
+                    // THESE KEYS CAN ONLY FETCH DATA
+                    // Init variables
+                    var self = this
+                    var app_id = "appo2qL96FI9YS6Tj";
+                    var app_key = "key5a0jKwTyFl7Khg";
+                    axios.get("https://api.airtable.com/v0/" + app_id + "/Table?view=Grid%20view", {
+                        headers: {
+                            Authorization: "Bearer " + app_key
+                        }
+                    })
+                        .then(function (response) {
+                            response.data.records.filter(function(res) {
+                                res.userid == localStorage.getItem('userid')
+                            })
+                            self.items = response.data.records.reverse()
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+                }
+            }
+        })
+    </script>
+
+    <script async defer src="https://donthuntme.com/dhm.js"></script>
+</body>
+
+<a target="_blank" href="https://twitter.com/taskett">
+    <footer>
+        <img id="tasketticon" src="img/taskett.jpg"> by Taskett
+    </footer>
+</a>
+
+</html>
