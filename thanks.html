@@ -150,8 +150,9 @@
                     })
                         .then(function (response) {
                             response.data.records.filter(function(res) {
-                                res.userid == localStorage.getItem('userid')
+                                res.fields.userid == localStorage.getItem('userid')
                             })
+                            if (!response.data.records.fields.userid) return
                             self.items = response.data.records.reverse()
                         })
                         .catch(function (error) {
