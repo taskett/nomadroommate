@@ -72,7 +72,7 @@
                         <p v-if="item['fields']['Rooms']"><strong>Rooms Available: </strong>{{ item['fields']['Rooms'] }}</p>
                         <p v-if="item['fields']['Start']"><strong>Travel Dates: </strong>{{ item['fields']['Start'] }} through {{ item['fields']['End'] }}</p>
                         <p v-if="item['fields']['Genders']"><strong>Allowed gender(s): </strong>{{ item['fields']['Genders'] }}</p>
-                        <div v-if="item['fields']['SlackMessage']" class="slackMessage">
+                        <div v-if="item['fields']['SlackMessage']" class="slackMessage button">
                             <img class="userpic" :src="item['fields']['Userphoto']" alt="" v-if="item['fields']['Userphoto']">
                             <a  v-if="item['fields']['SlackMessage']" :href="item['fields']['SlackMessage']"> Message {{item['fields']['Username']}}</a>
                         </div>

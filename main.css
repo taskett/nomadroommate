@@ -64,12 +64,25 @@ body img {
 
 #app.listings img{
     height: 200px;
-    width: 200px;
+    width: 250px;
 }
 
 #app.listings .container {
     padding: 20px;
 }
+
+#app.listings .slackMessage.button {
+    background-color: #b6e1b6;
+    width: 85%;
+    text-align: left;
+    font-size: 20px;
+}
+
+#app.listings .slackMessage.button img {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
 
 h1 {
     color: #555;
