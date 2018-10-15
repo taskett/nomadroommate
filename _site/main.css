@@ -9,6 +9,7 @@ body {
 
 body img {
     max-width: 100%;
+    border-radius: 5px;
 }
 
 /* @media screen and (max-width: 800px) {
@@ -58,6 +59,12 @@ body img {
 
 #app.listings {
     padding: 20px;
+    margin-top: 80px;
+}
+
+#app.listings img{
+    height: 200px;
+    width: 200px;
 }
 
 #app.listings .container {
@@ -224,9 +231,11 @@ header .title p {
 }
 
 .userpic {
-    display: block;
-    max-width: 50px;
-    max-height: 70px;
+    display: inline-block;
+    float: left;
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 25px;
 }
 
 
