@@ -1,4 +1,4 @@
- if (!isAuthenticated()) window.location.href = '/index.html';
+//  if (!isAuthenticated()) window.location.href = '/index.html';
 
 window.addEventListener('DOMContentLoaded', function () {
     var BotUserOAuthAccessToken = null;
@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         requestSlackUsers(localStorage.getItem('userid')).then(function (res) {
             if (!res) {
-                document.getElementById("joinSlack").innerHTML = "with these numbers in the field 'full name': " + localStorage.getItem('userid');
+                document.getElementById("joinSlack").innerHTML = "with these numbers in the <b> field 'full name': " + localStorage.getItem('userid') + '</b>';
                 loadingGif.style.display = 'none';
             } else {
                 window.location.href = '/list_place.html' 
