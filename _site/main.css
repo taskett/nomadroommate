@@ -33,14 +33,26 @@ body img {
     padding: 20px;
 }
 
+#app.welcome .container p {
+    font-size: 24px;
+    text-align: center; 
+}
+
 #app.welcome .button {
     margin: 0 auto;
     margin-top: 50px;
-    background-color: #555;
-    color: white !important;
-}
-#app.welcome .button a {
-    color: white !important;
+    background-color: #b6e1b6;
+    color: #000;
+    font-weight: 600;
+    height: 50px;
+    display: block;
+    width: 400px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 3px 0 14px 0 rgba(0, 0, 0, .06);
+    -moz-box-shadow: 3px 0 14px 0 rgba(0, 0, 0, .06);
+    box-shadow: 3px 0 14px 0 rgba(0, 0, 0, .06);
 }
 
 #app.listings {
@@ -156,6 +168,11 @@ header .title p {
     position: absolute;
     color: white;
     background-color: #555;
+}
+
+#btn-login {
+    background-color: #b6e1b6;
+    color: #555;
 }
 
 #roommate {
