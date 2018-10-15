@@ -20,6 +20,7 @@ body img {
 #app {
     margin-top: 250px;
     height: calc(100vh - 130px);
+    text-align: center;
 }
 #app.welcome {
     width: 100%;

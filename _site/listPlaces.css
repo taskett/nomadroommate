@@ -5,6 +5,7 @@ body {
 
 p {
     padding-left: 0;
+    text-align: center;
 }
 
 h1,
@@ -15,27 +16,33 @@ h2 {
 .voting-form {
     background: #eee;
     padding: 20px;
-    margin: 0 0 20px 0;
+    margin-left: auto ;
+    margin-right: auto ;
+    margin-top: -70px;
+    width: 40%;
+    border-radius: 5px;
 }
 
 select {
     width: 200px;
     text-align: center;
     background: white;
-    border: 5px solid white;
 }
 
 input {
     background: white;
     border: 2px solid white;
+    border-radius: 5px;
     padding: 5px;
     margin-top: 10px;
 }
 
 input#buttonz {
     width: 100px;
-    border: 2px solid white;
+    background-color: #b6e1b6;
     padding: 10px;
+    font-weight: 600;
+    border-radius: 5px;
     margin: 10px 0 10px;
 }
 
