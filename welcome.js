@@ -12,8 +12,9 @@ window.addEventListener('DOMContentLoaded', function () {
             if (!res) {
                 document.getElementById("joinSlack").innerHTML = "with these numbers in the <b> field 'full name': " + localStorage.getItem('userid') + '</b>';
                 loadingGif.style.display = 'none';
-            } else {
-                window.location.href = '/list_place.html' 
+            } 
+            else {
+                window.location.href = '/list_place.html';
             }
         })
     });
@@ -21,7 +22,7 @@ window.addEventListener('DOMContentLoaded', function () {
     function requestSlackUsers(userid) {
         return axios.post('https://slack.com/api/users.list?token=' + BotUserOAuthAccessToken)
             .then(function (res) {
-                var mem = res.data.members.filter(function (a) {
+                let mem = res.data.members.filter(function (a) {
                     return a.profile.real_name == userid;
                 })
                 return mem[0];

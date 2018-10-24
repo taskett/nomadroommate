@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,34 +26,40 @@
 
     <link rel="icon" href="/img/houseicon.png">
 
-        <!-- Start of Async Drift Code -->
-        <script>
-            "use strict";
-            
-            !function() {
+    <!-- Start of Async Drift Code -->
+    <script>
+        "use strict";
+
+        ! function () {
             var t = window.driftt = window.drift = window.driftt || [];
             if (!t.init) {
-                if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-                t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-                t.factory = function(e) {
-                return function() {
-                    var n = Array.prototype.slice.call(arguments);
-                    return n.unshift(e), t.push(n), t;
-                };
-                }, t.methods.forEach(function(e) {
-                t[e] = t.factory(e);
-                }), t.load = function(t) {
-                var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-                o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-                var i = document.getElementsByTagName("script")[0];
-                i.parentNode.insertBefore(o, i);
-                };
+                if (t.invoked) return void(window.console && console.error && console.error(
+                    "Drift snippet included twice."));
+                t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page",
+                        "hide", "off", "on"
+                    ],
+                    t.factory = function (e) {
+                        return function () {
+                            var n = Array.prototype.slice.call(arguments);
+                            return n.unshift(e), t.push(n), t;
+                        };
+                    }, t.methods.forEach(function (e) {
+                        t[e] = t.factory(e);
+                    }), t.load = function (t) {
+                        var e = 3e5,
+                            n = Math.ceil(new Date() / e) * e,
+                            o = document.createElement("script");
+                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src =
+                            "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                        var i = document.getElementsByTagName("script")[0];
+                        i.parentNode.insertBefore(o, i);
+                    };
             }
-            }();
-            drift.SNIPPET_VERSION = '0.3.1';
-            drift.load('4634gtn6hrst');
-            </script>
-            <!-- End of Async Drift Code -->
+        }();
+        drift.SNIPPET_VERSION = '0.3.1';
+        drift.load('4634gtn6hrst');
+    </script>
+    <!-- End of Async Drift Code -->
 
     <title>Nomad Roommate Finder</title>
 </head>
@@ -83,7 +90,7 @@
                 </div>
             </nav>
         </div>
-         <main class="container">
+        <main class="container">
             <!-- home view -->
             <div id="home-view">
                 <h4></h4>
@@ -95,14 +102,18 @@
         <div class="container">
             <ul>
                 <li v-for="item in items">
-                    <div class="container">
+                    <div class="container" :id="item['id']">
                         <h3 v-if="item['fields']['Location']">{{ item['fields']['Location'] }}</h3>
                         <img :src="item['fields']['PhotoLink']" alt="" v-if="item['fields']['PhotoLink']" width="150">
-                        <p v-if="item['fields']['Price']"><strong>Price Per Room: </strong>{{ item['fields']['Price'] }}</p>
-                        <p v-if="item['fields']['Rooms']"><strong>Rooms Available: </strong>{{ item['fields']['Rooms'] }}</p>
-                        <p v-if="item['fields']['Start']"><strong>Travel Dates: </strong>{{ item['fields']['Start'] }} through {{ item['fields']['End'] }}</p>
-                        <p v-if="item['fields']['Genders']"><strong>Allowed gender(s): </strong>{{ item['fields']['Genders'] }}</p>
-                        <a target="_blank"  v-if="item['fields']['SlackMessage']" :href="item['fields']['SlackMessage']">
+                        <p v-if="item['fields']['Price']"><strong>Price Per Room: </strong>{{ item['fields']['Price']
+                            }}</p>
+                        <p v-if="item['fields']['Rooms']"><strong>Rooms Available: </strong>{{ item['fields']['Rooms']
+                            }}</p>
+                        <p v-if="item['fields']['Start']"><strong>Travel Dates: </strong>{{ item['fields']['Start'] }}
+                            through {{ item['fields']['End'] }}</p>
+                        <p v-if="item['fields']['Genders']"><strong>Allowed gender(s): </strong>{{
+                            item['fields']['Genders'] }}</p>
+                        <a target="_blank" v-if="item['fields']['SlackMessage']" :href="item['fields']['SlackMessage']">
                             <div v-if="item['fields']['SlackMessage']" class="slackMessage button" :href="item['fields']['SlackMessage']">
                                 <img class="userpic" :src="item['fields']['Userphoto']" alt="" v-if="item['fields']['Userphoto']">
                                 Message {{item['fields']['Username']}}
@@ -131,16 +142,16 @@
                     var app_id = "appo2qL96FI9YS6Tj";
                     var app_key = "key5a0jKwTyFl7Khg";
                     axios.get("https://api.airtable.com/v0/" + app_id + "/Table?view=Grid%20view", {
-                        headers: {
-                            Authorization: "Bearer " + app_key
-                        }
-                    })
-                    .then(function (response) {
-                        self.items = response.data.records.reverse()
-                    })
-                    .catch(function (error) {
-                        console.log(error)
-                    })
+                            headers: {
+                                Authorization: "Bearer " + app_key
+                            }
+                        })
+                        .then(function (response) {
+                            self.items = response.data.records.reverse()
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
                 }
             }
         })
@@ -150,7 +161,7 @@
 </body>
 
 <a target="_blank" href="https://twitter.com/taskett">
-    <footer >
+    <footer>
         <img id="tasketticon" src="img/taskett.jpg"> by Taskett
     </footer>
 </a>
