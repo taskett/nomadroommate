@@ -84,6 +84,10 @@
                             Log Out
                         </div>
 
+                        <div id="btn-profile" class="header_button">
+                            Profile
+                        </div>
+
                     </div>
                 </div>
             </nav>
@@ -152,8 +156,6 @@
                     })
                     .then(function (response) {
                         let userid = getUrlParameter('user');
-                        console.log({userid}, {response});
-
                         let userListings = response.data.records.filter( (a) => {
                             return a.fields.userid == userid;
                         }).reverse()

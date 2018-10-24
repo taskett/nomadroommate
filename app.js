@@ -36,6 +36,7 @@ window.addEventListener('DOMContentLoaded', function () {
   var homeViewBtn = document.getElementById('btn-home-view');
   var loginBtn = document.getElementById('btn-login');
   var logoutBtn = document.getElementById('btn-logout');
+  var profileBtn = document.getElementById('btn-profile');
   var loginStatus = document.querySelector('.container h4');
   var loginStatusContainer = document.querySelector('.container');
   var loginView = document.getElementById('login-view');
@@ -100,6 +101,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (isAuthenticated()) {
       loginBtn.style.display = 'none';
       logoutBtn.style.display = 'block';
+      profileBtn.style.display = 'block';
 
       if (btnListNewItemsLoggedin && btnListNewItems) {
         btnListNewItemsLoggedin.style.display = 'block';
@@ -109,6 +111,7 @@ window.addEventListener('DOMContentLoaded', function () {
     else {
       loginBtn.style.display = 'block';
       logoutBtn.style.display = 'none';
+      profileBtn.style.display = 'none';
         if (btnListNewItemsLoggedin && btnListNewItems) {
           btnListNewItemsLoggedin.style.display = 'none';
           btnListNewItems.style.display = 'block';
@@ -145,6 +148,10 @@ window.addEventListener('DOMContentLoaded', function () {
     webAuth.authorize();
   });
 
+  profileBtn.addEventListener('click', function (e) {
+    window.location.href = '/profile.html?user=' + localStorage.getItem('userid')
+  });
+
   displayError(false);
 
 
@@ -153,5 +160,5 @@ window.addEventListener('DOMContentLoaded', function () {
 
   displayButtons();
 
-  console.log("app loaded v35");
+  console.log("app loaded v36");
 });

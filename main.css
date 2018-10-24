@@ -253,6 +253,13 @@ header .title p {
     color: #555;
 }
 
+#btn-profile {
+    right: 200px;
+    position: absolute;
+    color: white;
+    background-color: #555;
+}
+
 #roommate {
     position: fixed;
     float: left;
