@@ -67,18 +67,18 @@ body img {
     width: 250px;
 }
 
-#app.listings .container {
+.listings .container {
     padding: 20px;
 }
 
-#app.listings .slackMessage.button {
+.listings .slackMessage.button {
     background-color: #b6e1b6;
     width: 85%;
     text-align: left;
     font-size: 20px;
 }
 
-#app.listings .slackMessage.button img {
+.listings .slackMessage.button img {
     margin-top: 10px;
     margin-right: 10px;
 }
@@ -120,6 +120,25 @@ body img {
     margin: 40px;
     margin-left: 20px;
 }
+
+#app.profile {
+    max-width: 100%;
+    
+}
+#app.profile .title {
+    width: 61%;
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+}
+#app.profile .title .userpic{
+    margin-top: 10px;
+    max-width: 100px;
+    max-height: 100px;
+}
+
 
 
 h1 {
@@ -422,26 +441,26 @@ footer {
 
     
 
-    #app.listings {
+    .listings {
         padding: 0;
     }
 
-    #app.listings .container {
+    .listings .container {
         padding: 0;
     }
 
-    #app.listings .container li {
+    .listings .container li {
         width: 85%;
         margin: 0;
         padding: 10px;
         margin-bottom: 20px;
     }
 
-    #app.listings .container li .container {
+    .listings .container li .container {
        padding: 20px;
     }
    
-    #app.listings .container li .slackMessage {
+    .listings .container li .slackMessage {
        text-align: center;
        width: 90%;
        height: 50px;
@@ -453,13 +472,13 @@ footer {
        cursor: pointer;
        background-color: #ccc;
     }
-    #app.listings .container li .slackMessage .userpic {
+    .listings .container li .slackMessage .userpic {
        max-width: 30%;
        float: left;
        border-radius: 50px;
 
     }
-    #app.listings .container li .slackMessage a {
+    .listings .container li .slackMessage a {
        max-width: 70%;
        float: right;
        text-align: left;
